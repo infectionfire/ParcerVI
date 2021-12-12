@@ -38,7 +38,7 @@ public static int number = 0;
                 Advantages.Advantages();
                 Complectation.Complectation();
                 Weight.Weigth();
-                TTX=characterystics +advantages+complectation+weigth;
+                TTX=characterystics+advantages+complectation+weigth;
                 ttx.add(i, TTX);
                 TTX = ""; characterystics ="";advantages="";complectation="";weigth="";
                 number++;

@@ -1,7 +1,6 @@
 package org.example;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -17,14 +16,12 @@ public class WriteToFile {
         try {
             pw = new PrintWriter(file);
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args){
         pw.println(ParserPage.CreateMassive());
 //        pw.println(ttx);
         pw.println("Done!");
