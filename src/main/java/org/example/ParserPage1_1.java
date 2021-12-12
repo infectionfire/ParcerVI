@@ -13,31 +13,32 @@ import java.util.List;
 public class ParserPage1_1 {
 
 public static int number = 0;
+//изменяем count в зависимости от количества ссылок
     public static int count = 3;
     static List<String> ttx = new ArrayList<String>(3);
-    static String TTX = "";
+    static String TTX = "",characterystics ="",advantages="",complectation="",weigth="";
 
         public static Document getPage() throws IOException {
         //меняем значение для выбора ссылки, отсчет с нуля
         String url = (String) ReadingFromFile.readPrintValue().get(number);
-        Document page = Jsoup.parse(new URL(url), 2000);
+        Document page = Jsoup.parse(new URL(url), 2032);
                 return page;
     }
 //технические характеристики
     public static void characterystics()  throws IOException {
-        TTX+= getPage().baseUri()+"\n\n";
+        characterystics+= getPage().baseUri()+"\n\n";
         Document page = getPage();
         Element tableParameter = page.select("table[class=fs-13]").first();
         assert tableParameter != null;
         Elements names = tableParameter.select("tr");
         Elements values = names.select("tr");
-        TTX+="Технические характеристики:\n"+"\n";
+        characterystics+="Технические характеристики:\n"+"\n";
         for (Element value:values){
             String theme = value.select("tr").text();
-            TTX+="- "+theme+";\n";
+            characterystics+="- "+theme+";\n";
 
         }
-        TTX+="\n";
+        characterystics+="\n";
     }
     //особенности
     public static void advantages()  throws IOException {
@@ -46,12 +47,12 @@ public static int number = 0;
         assert tableParameter != null;
         Elements names = tableParameter.select("ul");
         Elements values = names.select("li");
-        TTX+="Особенности:\n"+"\n";
+        advantages+="Особенности:\n"+"\n";
         for (Element value:values){
             String theme = value.select("li").text();
-            TTX+="- "+theme+"\n";
+            advantages+="- "+theme+"\n";
         }
-        TTX+="\n";
+        advantages+="\n";
     }
 
     //комплектация
@@ -61,12 +62,12 @@ public static int number = 0;
         assert tableParameter != null;
         Elements names = tableParameter.select("ul");
         Elements values = names.select("li");
-        TTX+="Комплектация:\n"+"\n";
+        complectation+="Комплектация:\n"+"\n";
         for (Element value:values){
             String theme = value.select("li").text();
-            TTX+="- "+theme+"\n";
+            complectation+="- "+theme+"\n";
         }
-        TTX+="\n";
+        complectation+="\n";
     }
     //вес, первая строка - брутто, остальные перекидываем в габариты
     public static void weigth()  throws IOException {
@@ -75,15 +76,24 @@ public static int number = 0;
         assert tableParameter != null;
         Elements names = tableParameter.select("b");
         Elements values = names.select("b");
-        TTX+="Габаритные размеры:\n"+"\n";
+        weigth+="Габаритные размеры:\n"+"\n";
+        List<String> values1 = new ArrayList<>(4);
         for (Element value:values){
-
             String theme = value.select("b").text();
-            TTX+="- Вес брутто: "+theme+" кг;\n";
+            values1.add(String.valueOf(theme));
+//            weigth+="- Вес брутто: "+theme+" кг;\n";
         }
-        //кривые габариты, последние 3 строчки перенести
-        TTX+="- Габаритные размеры (ДхШхВ): мм.";
-        TTX+="\n\n";
+        for(int i =0; i<4;i++){
+            if (i==0){
+                weigth+="- Вес брутто: "+ values1.get(i).toString()+" кг;\n- Габаритные размеры (ДхШхВ): ";
+            }else if (i!=3){
+                weigth+=values1.get(i).toString()+"x";
+            }else{
+                weigth+=values1.get(i).toString();
+            }
+        }
+        weigth+=" мм.";
+        weigth+="\n\n";
 
     }
 
@@ -96,9 +106,9 @@ public static int number = 0;
                 advantages();
                 complectation();
                 weigth();
+                TTX=characterystics +advantages+complectation+weigth;
                 ttx.add(i, TTX);
-                System.out.println(ttx.get(i));
-                TTX = "";
+                TTX = ""; characterystics ="";advantages="";complectation="";weigth="";
                 number++;
             } catch (Exception e) {
                 System.out.println(e);
