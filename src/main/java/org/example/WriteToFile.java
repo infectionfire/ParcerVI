@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import static org.example.ParserPage1_1.ttx;
+import static org.example.ParserPage.ttx;
 
 
 public class WriteToFile {
@@ -25,7 +25,7 @@ public class WriteToFile {
     }
 
     public static void main(String[] args) throws IOException {
-        pw.println(ParserPage1_1.CreateMassive());
+        pw.println(ParserPage.CreateMassive());
 //        pw.println(ttx);
         pw.println("Done!");
         pw.close();

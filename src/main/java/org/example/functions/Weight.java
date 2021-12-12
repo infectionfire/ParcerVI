@@ -1,5 +1,6 @@
-package org.example;
+package org.example.functions;
 
+import org.example.ParserPage;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -11,12 +12,12 @@ import java.util.List;
 public class Weight {//вес, первая строка - брутто, остальные перекидываем в габариты
 
     public static void Weigth() throws IOException {
-        Document page = ParserPage1_1.getPage();
+        Document page = ParserPage.getPage();
         Element tableParameter = page.select("div.fs-13.lh-20.c-gray3").first();
         assert tableParameter != null;
         Elements names = tableParameter.select("b");
         Elements values = names.select("b");
-        ParserPage1_1.weigth += "Габаритные размеры:\n" + "\n";
+        ParserPage.weigth += "Габаритные размеры:\n" + "\n";
         List<String> values1 = new ArrayList<String>(4);
         for (Element value : values) {
             String theme = value.select("b").text();
@@ -24,15 +25,15 @@ public class Weight {//вес, первая строка - брутто, ост�
         }
         for (int i = 0; i < 4; i++) {
             if (i == 0) {
-                ParserPage1_1.weigth += "- Вес брутто: " + values1.get(i) + " кг;\n- Габаритные размеры (ДхШхВ): ";
+                ParserPage.weigth += "- Вес брутто: " + values1.get(i) + " кг;\n- Габаритные размеры (ДхШхВ): ";
             } else if (i != 3) {
-                ParserPage1_1.weigth += values1.get(i) + "x";
+                ParserPage.weigth += values1.get(i) + "x";
             } else {
-                ParserPage1_1.weigth += values1.get(i);
+                ParserPage.weigth += values1.get(i);
             }
         }
-        ParserPage1_1.weigth += " мм.";
-        ParserPage1_1.weigth += "\n\n";
+        ParserPage.weigth += " мм.";
+        ParserPage.weigth += "\n\n";
 
     }
 }
