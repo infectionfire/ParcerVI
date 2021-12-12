@@ -7,7 +7,7 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 
-public class Complectation {//комплектация
+public class Equipment {//комплектация
 
     public static void Complectation() throws IOException {
         Document page = ParserPage.getPage();
@@ -15,11 +15,11 @@ public class Complectation {//комплектация
         assert tableParameter != null;
         Elements names = tableParameter.select("ul");
         Elements values = names.select("li");
-        ParserPage.complectation += "Комплектация:\n" + "\n";
+        ParserPage.equipment += "Комплектация:\n" + "\n";
         for (Element value : values) {
             String theme = value.select("li").text();
-            ParserPage.complectation += "- " + theme + "\n";
+            ParserPage.equipment += "- " + theme + "\n";
         }
-        ParserPage.complectation += "\n";
+        ParserPage.equipment += "\n";
     }
 }

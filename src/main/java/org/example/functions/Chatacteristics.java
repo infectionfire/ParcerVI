@@ -12,13 +12,13 @@ import java.util.List;
 public class Chatacteristics {//технические характеристики
 
     public static void Characterystics() throws IOException {
-        ParserPage.characterystics += ParserPage.getPage().baseUri() + "\n\n";
+        ParserPage.characteristics += ParserPage.getPage().baseUri() + "\n\n";
         Document page = ParserPage.getPage();
         Element tableParameter = page.select("table[class=fs-13]").first();
         assert tableParameter != null;
         Elements names = tableParameter.select("tr");
         Elements values = names.select("tr");
-        ParserPage.characterystics += "Технические характеристики:\n" + "\n";
+        ParserPage.characteristics += "Технические характеристики:\n" + "\n";
         List<String> characters = new ArrayList<>();
         for (Element value : values) {
             String theme = value.select("tr").text();
@@ -26,11 +26,11 @@ public class Chatacteristics {//технические характеристи�
         }
         for (int i = 0; i < characters.size(); i++) {
             if (i != characters.size()-1) {
-                ParserPage.characterystics += characters.get(i) + ";";
+                ParserPage.characteristics += characters.get(i) + ";";
             } else {
-                ParserPage.characterystics += characters.get(i) + ".\n";
+                ParserPage.characteristics += characters.get(i) + ".\n";
             }
-            ParserPage.characterystics += "\n";
+            ParserPage.characteristics += "\n";
         }
     }
 }

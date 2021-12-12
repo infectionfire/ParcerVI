@@ -17,7 +17,7 @@ public class Weight {//вес, первая строка - брутто, ост�
         assert tableParameter != null;
         Elements names = tableParameter.select("b");
         Elements values = names.select("b");
-        ParserPage.weigth += "Габаритные размеры:\n" + "\n";
+        ParserPage.weight += "Габаритные размеры:\n" + "\n";
         List<String> values1 = new ArrayList<String>(4);
         for (Element value : values) {
             String theme = value.select("b").text();
@@ -25,15 +25,15 @@ public class Weight {//вес, первая строка - брутто, ост�
         }
         for (int i = 0; i < 4; i++) {
             if (i == 0) {
-                ParserPage.weigth += "- Вес брутто: " + values1.get(i) + " кг;\n- Габаритные размеры (ДхШхВ): ";
+                ParserPage.weight += "- Вес брутто: " + values1.get(i) + " кг;\n- Габаритные размеры (ДхШхВ): ";
             } else if (i != 3) {
-                ParserPage.weigth += values1.get(i) + "x";
+                ParserPage.weight += values1.get(i) + "x";
             } else {
-                ParserPage.weigth += values1.get(i);
+                ParserPage.weight += values1.get(i);
             }
         }
-        ParserPage.weigth += " мм.";
-        ParserPage.weigth += "\n\n";
+        ParserPage.weight += " мм.";
+        ParserPage.weight += "\n\n";
 
     }
 }

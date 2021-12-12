@@ -24,10 +24,10 @@ public class WriteToFile {
     public static void main(String[] args){
         pw.println(ParserPage.CreateMassive());
 //        pw.println(ttx);
-        pw.println("Done!");
+        pw.println("Successful!");
+        System.out.println("Done!");
         pw.close();
-        System.out.println(ttx);
-    }
+        }
 
 
 

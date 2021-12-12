@@ -2,7 +2,7 @@ package org.example;
 
 import org.example.functions.Advantages;
 import org.example.functions.Chatacteristics;
-import org.example.functions.Complectation;
+import org.example.functions.Equipment;
 import org.example.functions.Weight;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -13,16 +13,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ParserPage {
-
-public static int number = 0;
-//изменяем count в зависимости от количества ссылок
+    //итерация по массиву
+    public static int number = 0;
+    //изменяем count в зависимости от количества ссылок
     public static int count = 3;
-    static List<String> ttx = new ArrayList<>(3);
+    //если товаров больше сотки поменять тоже
+    static List<String> ttx = new ArrayList<>(100);
     static String TTX = "";
-    public static String characterystics ="";
+    public static String characteristics ="";
     public static String advantages="";
-    public static String complectation="";
-    public static String weigth="";
+    public static String equipment ="";
+    public static String weight ="";
 
         public static Document getPage() throws IOException {
         //меняем значение для выбора ссылки, отсчет с нуля
@@ -36,11 +37,13 @@ public static int number = 0;
             try {
                 Chatacteristics.Characterystics();
                 Advantages.Advantages();
-                Complectation.Complectation();
+                Equipment.Complectation();
                 Weight.Weigth();
-                TTX=characterystics+advantages+complectation+weigth;
+                TTX= characteristics +advantages+ equipment + weight;
                 ttx.add(i, TTX);
-                TTX = ""; characterystics ="";advantages="";complectation="";weigth="";
+                TTX = ""; characteristics ="";advantages="";
+                equipment ="";
+                weight ="";
                 number++;
             } catch (Exception e) {
 //                System.out.println(e); в принципе не нужен
