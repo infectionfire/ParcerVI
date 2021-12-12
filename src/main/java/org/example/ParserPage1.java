@@ -18,14 +18,7 @@ public static int number = 0;
         Document page = Jsoup.parse(new URL(url), 5000);
         return page;
     }
-
-    public static Document getPageUnprint() throws IOException {
-        //меняем значение для выбора ссылки, отсчет с нуля
-        String url = (String) ReadingFromFile.readPrintValue().get(number);
-        Document page = Jsoup.parse(new URL(url), 5000);
-        return page;
-    }
-
+//технические характеристики
     public static void characterystics()  throws IOException {
         Document page = getPage();
         Element tableParameter = page.select("table[class=fs-13]").first();
@@ -39,7 +32,7 @@ public static int number = 0;
         }
         System.out.println("\n");
     }
-
+    //особенности
     public static void advantages()  throws IOException {
         Document page = getPage();
         Element tableParameter = page.select("td[id=tab2_content]").first();
@@ -53,7 +46,7 @@ public static int number = 0;
         System.out.println("\n");
     }
 
-
+    //комплектация
     public static void complectation()  throws IOException {
         Document page = getPage();
         Element tableParameter = page.select("div.fs-13.c-gray3.complect").first();
@@ -66,7 +59,7 @@ public static int number = 0;
         }
         System.out.println("\n");
     }
-
+    //вес, первая строка - брутто, остальные перекидываем в габариты
     public static void weigth()  throws IOException {
         Document page = getPage();
         Element tableParameter = page.select("div.fs-13.lh-20.c-gray3").first();
