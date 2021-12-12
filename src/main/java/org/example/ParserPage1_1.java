@@ -13,14 +13,14 @@ import java.util.List;
 public class ParserPage1_1 {
 
 public static int number = 0;
-    public static int count = 100;
-    static List<String> ttx = new ArrayList<String>(100);
+    public static int count = 3;
+    static List<String> ttx = new ArrayList<String>(3);
     static String TTX = "";
 
         public static Document getPage() throws IOException {
         //меняем значение для выбора ссылки, отсчет с нуля
         String url = (String) ReadingFromFile.readPrintValue().get(number);
-        Document page = Jsoup.parse(new URL(url), 5000);
+        Document page = Jsoup.parse(new URL(url), 2000);
                 return page;
     }
 //технические характеристики
@@ -87,22 +87,25 @@ public static int number = 0;
 
     }
 
-    public static void main(String[] args) throws IOException, NullPointerException {
+    public static List<String> CreateMassive() throws IOException, NullPointerException {
 //методы
 
-        for (int i = 0; i<count; i++){
-            try{
-            characterystics();
-            advantages();
-            complectation();
-            weigth();
-            ttx.add(i, TTX);
-            TTX="";
-            number++;}
-            catch (Exception e){
+        for (int i = 0; i < count; i++) {
+            try {
+                characterystics();
+                advantages();
+                complectation();
+                weigth();
+                ttx.add(i, TTX);
+                System.out.println(ttx.get(i));
+                TTX = "";
+                number++;
+            } catch (Exception e) {
                 System.out.println(e);
             }
+
         }
-        System.out.println(ttx.toString());
+        return ttx;
     }
+
 }
