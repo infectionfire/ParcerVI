@@ -6,6 +6,8 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Chatacterystics {//технические характеристики
 
@@ -17,11 +19,18 @@ public class Chatacterystics {//технические характеристи�
         Elements names = tableParameter.select("tr");
         Elements values = names.select("tr");
         ParserPage.characterystics += "Технические характеристики:\n" + "\n";
+        List<String> characters = new ArrayList<>();
         for (Element value : values) {
             String theme = value.select("tr").text();
-            ParserPage.characterystics += "- " + theme + ";\n";
-
+            characters.add("- " + theme);
         }
-        ParserPage.characterystics += "\n";
+        for (int i = 0; i < characters.size(); i++) {
+            if (i != characters.size()-1) {
+                ParserPage.characterystics += characters.get(i) + ";";
+            } else {
+                ParserPage.characterystics += characters.get(i) + ".\n";
+            }
+            ParserPage.characterystics += "\n";
+        }
     }
 }
