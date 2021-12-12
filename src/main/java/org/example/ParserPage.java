@@ -1,7 +1,7 @@
 package org.example;
 
 import org.example.functions.Advantages;
-import org.example.functions.Chatacterystics;
+import org.example.functions.Chatacteristics;
 import org.example.functions.Complectation;
 import org.example.functions.Weight;
 import org.jsoup.Jsoup;
@@ -34,7 +34,7 @@ public static int number = 0;
 //методы
         for (int i = 0; i < count; i++) {
             try {
-                Chatacterystics.Characterystics();
+                Chatacteristics.Characterystics();
                 Advantages.Advantages();
                 Complectation.Complectation();
                 Weight.Weigth();
