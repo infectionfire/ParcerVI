@@ -8,10 +8,6 @@ import java.util.Scanner;
 
 public class ReadingFromFile {
 
-    public static void main(String[] args) throws FileNotFoundException {
-        System.out.println(readPrintValue());
-    }
-
     //создаем массив из списка ссылок
     public static List readPrintValue() throws FileNotFoundException {
         File file = new File("test.txt");
