@@ -25,7 +25,7 @@ public static int number = 0;
                 return page;
     }
 //технические характеристики
-    public static void characterystics()  throws IOException {
+    public static void Characterystics()  throws IOException {
         characterystics+= getPage().baseUri()+"\n\n";
         Document page = getPage();
         Element tableParameter = page.select("table[class=fs-13]").first();
@@ -41,7 +41,7 @@ public static int number = 0;
         characterystics+="\n";
     }
     //особенности
-    public static void advantages()  throws IOException {
+    public static void Advantages()  throws IOException {
         Document page = getPage();
         Element tableParameter = page.select("td[id=tab2_content]").first();
         assert tableParameter != null;
@@ -56,7 +56,7 @@ public static int number = 0;
     }
 
     //комплектация
-    public static void complectation()  throws IOException {
+    public static void Complectation()  throws IOException {
         Document page = getPage();
         Element tableParameter = page.select("div.fs-13.c-gray3.complect").first();
         assert tableParameter != null;
@@ -70,7 +70,7 @@ public static int number = 0;
         complectation+="\n";
     }
     //вес, первая строка - брутто, остальные перекидываем в габариты
-    public static void weigth()  throws IOException {
+    public static void Weigth()  throws IOException {
         Document page = getPage();
         Element tableParameter = page.select("div.fs-13.lh-20.c-gray3").first();
         assert tableParameter != null;
@@ -80,16 +80,15 @@ public static int number = 0;
         List<String> values1 = new ArrayList<>(4);
         for (Element value:values){
             String theme = value.select("b").text();
-            values1.add(String.valueOf(theme));
-//            weigth+="- Вес брутто: "+theme+" кг;\n";
+            values1.add(theme);
         }
         for(int i =0; i<4;i++){
             if (i==0){
                 weigth+="- Вес брутто: "+ values1.get(i).toString()+" кг;\n- Габаритные размеры (ДхШхВ): ";
             }else if (i!=3){
-                weigth+=values1.get(i).toString()+"x";
+                weigth+= values1.get(i) +"x";
             }else{
-                weigth+=values1.get(i).toString();
+                weigth+= values1.get(i);
             }
         }
         weigth+=" мм.";
@@ -102,10 +101,10 @@ public static int number = 0;
 
         for (int i = 0; i < count; i++) {
             try {
-                characterystics();
-                advantages();
-                complectation();
-                weigth();
+                Characterystics();
+                Advantages();
+                Complectation();
+                Weigth();
                 TTX=characterystics +advantages+complectation+weigth;
                 ttx.add(i, TTX);
                 TTX = ""; characterystics ="";advantages="";complectation="";weigth="";
