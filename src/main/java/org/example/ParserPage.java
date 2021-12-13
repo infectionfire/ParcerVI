@@ -13,7 +13,7 @@ public class ParserPage {
     //итерация по массиву
     public static int number = 0;
     //изменяем count в зависимости от количества ссылок
-    public static int count = 69;
+    public static int count = 5;
     //если товаров больше сотки поменять тоже
     static List<String> ttx = new ArrayList<>(100);
     static String TTX = "";
@@ -21,19 +21,19 @@ public class ParserPage {
     public static String advantages="";
     public static String equipment ="";
     public static String weight ="";
-    public static String URL ="";
+    public static String URLs ="";
 
         public static Document getPage() throws IOException {
         //меняем значение для выбора ссылки, отсчет с нуля
         String url = (String) ReadingFromFile.readPrintValue().get(number)+"/print/";
 
-        return Jsoup.parse(new URL(url), 2032);
+        return Jsoup.parse(new URL(url), 2000);
     }
     public static Document getPageUnprint() throws IOException {
         //меняем значение для выбора ссылки, отсчет с нуля
         String url = (String) ReadingFromFile.readPrintValue().get(number);
-        URL=url+"\n";
-        return Jsoup.parse(new URL(url), 2037);
+        URLs =url+"\n";
+        return Jsoup.parse(new URL(url), 2000);
     }
 
     public static List<String> CreateMassive() throws NullPointerException {
@@ -46,8 +46,9 @@ public class ParserPage {
                 Advantages.Advantages();
                 Equipment.Complectation();
                 Weight.Weigth();
-                TTX= URL+Features.features+characteristics +advantages+ equipment + weight;
+                TTX= URLs +Features.features+characteristics +advantages+ equipment + weight;
                 ttx.add(i, TTX);
+                number++;
             } catch (Exception e) {
 //                System.out.println(e); в принципе не нужен
             }

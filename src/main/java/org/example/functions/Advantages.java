@@ -19,7 +19,7 @@ public class Advantages {//особенности
         //вытаскиваем инфу из маркированного списка
         Elements names = tableParameter.select("ul");
         Elements values = names.select("li");
-        ParserPage.advantages = "<strong>Особенности:</strong>\n" + "\n";
+        ParserPage.advantages = "<strong>Особенности:</strong>\n\n";
         //цикл добавляет значения к строке, попутно форматируя ее
         for (Element value : values) {
             String theme = value.select("li").text();

@@ -17,7 +17,7 @@ public class Chatacteristics {//технические характеристи�
         assert tableParameter != null;
         Elements names = tableParameter.select("tr");
         Elements values = names.select("tr");
-        ParserPage.characteristics = "<strong>Технические характеристики:</strong>\n" + "\n";
+        ParserPage.characteristics = "<strong>Технические характеристики:</strong>\n\n";
         List<String> characters = new ArrayList<>();
         for (Element value : values) {
             String theme = value.select("tr").text();
