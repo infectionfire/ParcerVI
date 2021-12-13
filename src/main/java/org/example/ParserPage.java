@@ -26,12 +26,13 @@ public class ParserPage {
         public static Document getPage() throws IOException {
         //меняем значение для выбора ссылки, отсчет с нуля
         String url = (String) ReadingFromFile.readPrintValue().get(number)+"/print/";
-        URL=url+"\n";
+
         return Jsoup.parse(new URL(url), 2032);
     }
     public static Document getPageUnprint() throws IOException {
         //меняем значение для выбора ссылки, отсчет с нуля
         String url = (String) ReadingFromFile.readPrintValue().get(number);
+        URL=url+"\n";
         return Jsoup.parse(new URL(url), 2037);
     }
 
@@ -39,17 +40,14 @@ public class ParserPage {
 //методы
         for (int i = 0; i < count; i++) {
             try {
+                //подключаем модули
                 Features.Features();
-                Chatacteristics.Characterystics();
+                Chatacteristics.Characteristics();
                 Advantages.Advantages();
                 Equipment.Complectation();
                 Weight.Weigth();
                 TTX= URL+Features.features+characteristics +advantages+ equipment + weight;
                 ttx.add(i, TTX);
-                TTX = ""; Features.features=""; characteristics ="";advantages="";
-                equipment ="";
-                weight ="";
-                number++;
             } catch (Exception e) {
 //                System.out.println(e); в принципе не нужен
             }

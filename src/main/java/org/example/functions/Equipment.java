@@ -17,7 +17,7 @@ public class Equipment {//комплектация
         assert tableParameter != null;
         Elements names = tableParameter.select("ul");
         Elements values = names.select("li");
-        ParserPage.equipment += "<strong/>Комплектация:</strong>\n" + "\n";
+        ParserPage.equipment = "<strong/>Комплектация:</strong>\n" + "\n";
         for (Element value : values) {
             String theme = value.select("li").text();
             ParserPage.equipment += "- " + theme + "\n";

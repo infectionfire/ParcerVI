@@ -11,13 +11,13 @@ import java.util.List;
 
 public class Chatacteristics {//технические характеристики
 
-    public static void Characterystics() throws IOException {
+    public static void Characteristics() throws IOException {
         Document page = ParserPage.getPage();
         Element tableParameter = page.select("table[class=fs-13]").first();
         assert tableParameter != null;
         Elements names = tableParameter.select("tr");
         Elements values = names.select("tr");
-        ParserPage.characteristics += "<strong>Технические характеристики:</strong>\n" + "\n";
+        ParserPage.characteristics = "<strong>Технические характеристики:</strong>\n" + "\n";
         List<String> characters = new ArrayList<>();
         for (Element value : values) {
             String theme = value.select("tr").text();

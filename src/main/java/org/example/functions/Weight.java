@@ -12,12 +12,16 @@ import java.util.List;
 public class Weight {//вес, первая строка - брутто, остальные перекидываем в габариты
 
     public static void Weigth() throws IOException {
+        //берем страницу
         Document page = ParserPage.getPage();
+        //выбираем поля
         Element tableParameter = page.select("div.fs-13.lh-20.c-gray3").first();
         assert tableParameter != null;
+        //выбираем вложение
         Elements names = tableParameter.select("b");
         Elements values = names.select("b");
-        ParserPage.weight += "<strong>Габаритные размеры:</strong>\n" + "\n";
+        //добавляем
+        ParserPage.weight = "<strong>Габаритные размеры:</strong>\n" + "\n";
         List<String> values1 = new ArrayList<String>(4);
         for (Element value : values) {
             String theme = value.select("b").text();

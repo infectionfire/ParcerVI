@@ -4,8 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import static org.example.ParserPage.ttx;
-
 
 public class WriteToFile {
 
@@ -23,7 +21,6 @@ public class WriteToFile {
 
     public static void main(String[] args){
         pw.println(ParserPage.CreateMassive());
-//        pw.println(ttx);
         pw.println("Successful!");
         System.out.println("Done!");
         pw.close();
