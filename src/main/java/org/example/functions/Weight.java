@@ -17,7 +17,7 @@ public class Weight {//вес, первая строка - брутто, ост�
         assert tableParameter != null;
         Elements names = tableParameter.select("b");
         Elements values = names.select("b");
-        ParserPage.weight += "Габаритные размеры:\n" + "\n";
+        ParserPage.weight += "<strong>Габаритные размеры:</strong>\n" + "\n";
         List<String> values1 = new ArrayList<String>(4);
         for (Element value : values) {
             String theme = value.select("b").text();

@@ -1,9 +1,6 @@
 package org.example;
 
-import org.example.functions.Advantages;
-import org.example.functions.Chatacteristics;
-import org.example.functions.Equipment;
-import org.example.functions.Weight;
+import org.example.functions.*;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
@@ -24,24 +21,32 @@ public class ParserPage {
     public static String advantages="";
     public static String equipment ="";
     public static String weight ="";
+    public static String URL ="";
 
         public static Document getPage() throws IOException {
         //меняем значение для выбора ссылки, отсчет с нуля
+        String url = (String) ReadingFromFile.readPrintValue().get(number)+"/print/";
+        URL=url+"\n";
+        return Jsoup.parse(new URL(url), 2032);
+    }
+    public static Document getPageUnprint() throws IOException {
+        //меняем значение для выбора ссылки, отсчет с нуля
         String url = (String) ReadingFromFile.readPrintValue().get(number);
-            return Jsoup.parse(new URL(url), 2032);
+        return Jsoup.parse(new URL(url), 2037);
     }
 
     public static List<String> CreateMassive() throws NullPointerException {
 //методы
         for (int i = 0; i < count; i++) {
             try {
+                Features.Features();
                 Chatacteristics.Characterystics();
                 Advantages.Advantages();
                 Equipment.Complectation();
                 Weight.Weigth();
-                TTX= characteristics +advantages+ equipment + weight;
+                TTX= URL+Features.features+characteristics +advantages+ equipment + weight;
                 ttx.add(i, TTX);
-                TTX = ""; characteristics ="";advantages="";
+                TTX = ""; Features.features=""; characteristics ="";advantages="";
                 equipment ="";
                 weight ="";
                 number++;

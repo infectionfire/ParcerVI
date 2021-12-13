@@ -15,7 +15,7 @@ public class ReadingFromFile {
         Scanner sc = new Scanner(file);
         List<String > list = new ArrayList<>();
         while (sc.hasNextLine()) {
-            list.add(sc.nextLine()+"/print");
+            list.add(sc.nextLine());
         }
         return list;
 

@@ -10,12 +10,14 @@ import java.io.IOException;
 public class Equipment {//комплектация
 
     public static void Complectation() throws IOException {
+
         Document page = ParserPage.getPage();
+
         Element tableParameter = page.select("div.fs-13.c-gray3.complect").first();
         assert tableParameter != null;
         Elements names = tableParameter.select("ul");
         Elements values = names.select("li");
-        ParserPage.equipment += "Комплектация:\n" + "\n";
+        ParserPage.equipment += "<strong/>Комплектация:</strong>\n" + "\n";
         for (Element value : values) {
             String theme = value.select("li").text();
             ParserPage.equipment += "- " + theme + "\n";
