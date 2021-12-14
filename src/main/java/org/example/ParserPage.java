@@ -21,7 +21,7 @@ public class ParserPage {
     public static String advantages="";
     public static String equipment ="";
     public static String weight ="";
-    public static String URLs ="";
+    public static String features  ="";
 
         public static Document getPage() throws IOException {
         //меняем значение для выбора ссылки, отсчет с нуля
@@ -29,12 +29,12 @@ public class ParserPage {
 
         return Jsoup.parse(new URL(url), 2000);
     }
-    public static Document getPageUnprint() throws IOException {
-        //меняем значение для выбора ссылки, отсчет с нуля
-        String url = (String) ReadingFromFile.readPrintValue().get(number);
-        URLs =url+"\n";
-        return Jsoup.parse(new URL(url), 2000);
-    }
+        public static Document getPageUnprint() throws IOException {
+            //меняем значение для выбора ссылки, отсчет с нуля
+            String url = (String) ReadingFromFile.readPrintValue().get(number);
+
+            return Jsoup.parse(new URL(url), 2000);
+        }
 
     public static List<String> CreateMassive() throws NullPointerException {
 //методы
@@ -46,7 +46,7 @@ public class ParserPage {
                 Advantages.Advantages();
                 Equipment.Complectation();
                 Weight.Weigth();
-                TTX= URLs +Features.features+characteristics +advantages+ equipment + weight;
+                TTX= features+characteristics +advantages+ equipment + weight;
                 ttx.add(i, TTX);
                 number++;
             } catch (Exception e) {
