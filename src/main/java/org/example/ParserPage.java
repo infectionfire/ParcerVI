@@ -13,7 +13,7 @@ public class ParserPage {
     //итерация по массиву
     public static int number = 0;
     //изменяем count в зависимости от количества ссылок
-    public static int count = 5;
+    public static int count = 10;
     //если товаров больше сотки поменять тоже
     static List<String> ttx = new ArrayList<>(100);
     static String TTX = "";
