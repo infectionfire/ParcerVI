@@ -15,7 +15,7 @@ public class Equipment {//комплектация
 
         Element tableParameter = page.select("div.fs-13.c-gray3.complect").first();
         if (tableParameter!=null){
-        ParserPage.equipment = "<strong/>Комплектация:</strong>\n\n";
+        ParserPage.equipment = "<strong>Комплектация:</strong>\n\n";
         Elements names = tableParameter.select("ul");
         Elements values = names.select("li");
         for (Element value : values) {
@@ -24,7 +24,7 @@ public class Equipment {//комплектация
         }
         ParserPage.equipment += "\n";
         }else{
-            ParserPage.equipment = "<strong/>Комплектация:</strong>\n\n\n";
+            ParserPage.equipment = "<strong>Комплектация:</strong>\n\n\n";
         }
     }
 }
