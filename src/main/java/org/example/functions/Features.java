@@ -28,7 +28,7 @@ public class Features {
         String[] string1 = str.split("<");
         ParserPage.features=string1[0]+"\n\n";
         }else {
-         ParserPage.features=element+"\n\n";;}
+         ParserPage.features="\n\n";;}
         }
 
 }
