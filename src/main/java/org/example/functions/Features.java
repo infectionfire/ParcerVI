@@ -26,6 +26,8 @@ public class Features {
             strg = strg.replace("</strong>","");
             strg = strg.replace("</p>","");
             strg = strg.replace("</div>","");
+            strg = strg.replace("&nbsp;","");
+            strg = strg.replace("<p style=\"text-align: justify;\">","");
             ParserPage.features=strg+"\n";
         }else {
          ParserPage.features="\n\n";;}
