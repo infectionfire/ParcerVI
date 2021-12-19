@@ -23,8 +23,13 @@ public class Advantages {//особенности
             //цикл добавляет значения к строке, попутно форматируя ее
             for (Element value : values) {
                 String theme = value.select("li").text();
-                ParserPage.advantages += "- " + theme + "\n";
+                ParserPage.advantages += "- " + theme + ";\n";
             }
+        }
+        ParserPage.advantages = ParserPage.advantages.replace(";;",";");
+        if(ParserPage.advantages.endsWith(".;\n"))
+        {
+            ParserPage.advantages = ParserPage.advantages.replace(".;\n",".\n");
         }
         ParserPage.advantages += "\n";
     }
