@@ -12,14 +12,10 @@ public class Features {
     public static void Features()  throws IOException {
 
         Document page = ParserPage.getPageUnprint();
-        String str = "";
         Element element = page.select("div.content-block").first();
         if (element!=null){
-//        str+=element; previous version, not work with 2+ strings
-//        String[] string = str.split(">");
-//        str=string[2];
-//        String[] string1 = str.split("<");
-//        ParserPage.features=string1[0]+"\n\n";
+            //добавить зависимости от других параметров, добавить обработчик
+            //обработка выдачи, завернуть в массив для работы с О1 через, хз сколько памяти сожрет
             String strg = element.toString().replace("<div itemprop=\"description\" class=\"content-block\">", "");
             strg = strg.replace("<p style=\"text-align:justify\">","");
             strg = strg.replace("<strong>", "");
@@ -28,7 +24,15 @@ public class Features {
             strg = strg.replace("</div>","");
             strg = strg.replace("&nbsp;","");
             strg = strg.replace("<p style=\"text-align: justify;\">","");
-            ParserPage.features=strg+"\n";
+            strg = strg.replace("<li style=\"text-align:justify\">","");
+            strg = strg.replace("<li style=\"text-align: justify;\">","");
+            strg = strg.replace("<p>","");
+            strg = strg.replace("<li>","");
+            strg = strg.replace("</li>","");
+            strg = strg.replace("<ul>","");
+            strg = strg.replace("</ul>","");
+            strg = strg.replace("\n","");
+            ParserPage.features=strg+"\n\n";
         }else {
          ParserPage.features="\n\n";;}
         }

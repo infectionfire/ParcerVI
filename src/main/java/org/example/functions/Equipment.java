@@ -20,9 +20,16 @@ public class Equipment {//комплектация
         Elements values = names.select("li");
         for (Element value : values) {
             String theme = value.select("li").text();
-            ParserPage.equipment += "- " + theme + "\n";
+            if(theme.endsWith(";")||theme.endsWith(".")) {
+                ParserPage.equipment += "- " + theme + "\n";
+            }else{
+                ParserPage.equipment += "- " + theme + ";\n";
+            }
         }
-
+        if(ParserPage.equipment.endsWith(".;\n"))
+            {
+                ParserPage.equipment = ParserPage.equipment.replace(";\n",".\n");
+            }
         ParserPage.equipment += "\n";
         }else{
             ParserPage.equipment = "<strong>Комплектация:</strong>\n\n\n";
