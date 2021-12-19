@@ -1,4 +1,4 @@
-package org.example.preversions;
+package preversions;
 
 import org.example.ReadingFromFile;
 import org.jsoup.Jsoup;

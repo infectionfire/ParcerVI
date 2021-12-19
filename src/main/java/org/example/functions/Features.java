@@ -1,17 +1,10 @@
 package org.example.functions;
 
 import org.example.ParserPage;
-import org.example.ReadingFromFile;
-import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.Arrays;
-
-import static org.example.ParserPage.number;
-import static org.example.preversions.ParseListing.getPage;
 
 public class Features {
 //доделать метод
@@ -32,6 +25,7 @@ public class Features {
             strg = strg.replace("<strong>", "");
             strg = strg.replace("</strong>","");
             strg = strg.replace("</p>","");
+            strg = strg.replace("</div>","");
             ParserPage.features=strg+"\n";
         }else {
          ParserPage.features="\n\n";;}
