@@ -25,9 +25,6 @@ public class WriteToFile {
         System.out.println("Done!");
         pw.close();
         }
-
-
-
 }
 
 

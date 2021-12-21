@@ -13,7 +13,7 @@ public class ParserPage {
     //итерация по массиву
     public static int number = 0;
     //изменяем count в зависимости от количества ссылок
-    public static int count = 10;
+    public static int count = 30;
     //если товаров больше сотки поменять тоже
     static List<String> ttx = new ArrayList<>(100);
     static String TTX = "";
@@ -26,7 +26,7 @@ public class ParserPage {
 
         public static Document getPage() throws IOException {
         //меняем значение для выбора ссылки, отсчет с нуля
-        String url = (String) ReadingFromFile.readPrintValue().get(number)+"/print/";
+        String url = ReadingFromFile.readPrintValue().get(number)+"/print/";
 
         return Jsoup.parse(new URL(url), 2000);
     }
