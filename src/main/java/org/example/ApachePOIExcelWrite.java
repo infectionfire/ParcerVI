@@ -27,13 +27,12 @@ public class ApachePOIExcelWrite {
         int rowNum = 0;
         System.out.println("Creating excel");
         List<String> crms = CreateMassive();
-        for (String str : crms) {
+        int colNum = 0;
+        for (int i =0; i< crms.size();i++) {
             Row row = sheet.createRow(rowNum++);
-            int colNum = 0;
-            for (int i = 0; i< crms.size(); i++) {
-                Cell cell = row.createCell(colNum);
-                cell.setCellValue((String) crms.get(i));
-                }
+            Cell cell = row.createCell(colNum);
+            cell.setCellValue((String) crms.get(i));
+
             }
 
         try {

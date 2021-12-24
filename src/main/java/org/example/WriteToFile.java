@@ -1,6 +1,6 @@
 package org.example;
 
-import TestPackage.ToXls.ToXls;
+
 
 import java.io.*;
 
@@ -24,7 +24,6 @@ public class WriteToFile {
         pw.println("Successful!");
         System.out.println("Done!");
         pw.close();
-        ToXls.DelimitedToXls("testFile.txt");
         }
 }
 
