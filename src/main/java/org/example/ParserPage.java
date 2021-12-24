@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ParserPage {
+
     //итерация по массиву
     public static int number = 0;
     //изменяем count в зависимости от количества ссылок
@@ -47,7 +48,8 @@ public class ParserPage {
                 Advantages.Advantages();
                 Equipment.Complectation();
                 Weight.Weigth();
-                TTX= URLS+features+characteristics +advantages+ equipment + weight;
+                TTX= features+characteristics +advantages+ equipment + weight;
+
                 ttx.add(i, TTX);
                 number++;
             } catch (Exception e) {
