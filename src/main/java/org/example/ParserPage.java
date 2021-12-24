@@ -15,7 +15,7 @@ public class ParserPage {
     //изменяем count в зависимости от количества ссылок
     public static int count = 30;
     //если товаров больше сотки поменять тоже
-    static List<String> ttx = new ArrayList<>(100);
+    static List<String> ttx = new ArrayList<>(30);
     static String TTX = "";
     public static String characteristics ="";
     public static String advantages="";
@@ -51,7 +51,7 @@ public class ParserPage {
                 ttx.add(i, TTX);
                 number++;
             } catch (Exception e) {
-//                System.out.println(e); в принципе не нужен
+//                System.out.println(e);
             }
 
         }
