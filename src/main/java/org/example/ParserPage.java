@@ -17,6 +17,7 @@ public class ParserPage {
     public static int count = 100;
     //если товаров больше сотки поменять тоже
     static List<String> ttx = new ArrayList<>(30);
+    public static List<String> photo = new ArrayList<>();
     static String TTX = "";
     public static String characteristics ="";
     public static String advantages="";
