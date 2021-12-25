@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Chatacteristics {//технические характеристики
+public class GetChatacteristics {//технические характеристики
 
     public static void Characteristics() throws IOException {
         Document page = ParserPage.getPage();

@@ -14,9 +14,9 @@ public class ParserPage {
     //итерация по массиву
     public static int number = 0;
     //изменяем count в зависимости от количества ссылок
-    public static int count = 100;
+    public static int count = 200;
     //если товаров больше сотки поменять тоже
-    static List<String> ttx = new ArrayList<>(30);
+    static List<String> ttx = new ArrayList<>(200);
     public static List<String> photo = new ArrayList<>();
     static String TTX = "";
     public static String characteristics ="";
@@ -44,19 +44,17 @@ public class ParserPage {
         for (int i = 0; i < count; i++) {
             try {
                 //подключаем модули
-                Features.Features();
-                Chatacteristics.Characteristics();
-                Advantages.Advantages();
-                Equipment.Complectation();
-                Weight.Weigth();
+                GetFeatures.Features();
+                GetChatacteristics.Characteristics();
+                GetAdvantages.Advantages();
+                GetEquipment.Complectation();
+                GetWeight.Weigth();
                 TTX= features+characteristics +advantages+ equipment + weight;
-
                 ttx.add(i, TTX);
                 number++;
             } catch (Exception e) {
 //                System.out.println(e);игнорируем, не запишет больше, чем нужно
             }
-
         }
         return ttx;
     }

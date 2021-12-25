@@ -7,7 +7,7 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 
-public class Advantages {//особенности
+public class GetAdvantages {//особенности
 
     public static void Advantages() throws IOException {
         //берем ссылку на товар

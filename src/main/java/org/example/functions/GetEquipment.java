@@ -7,7 +7,7 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 
-public class Equipment {//комплектация
+public class GetEquipment {//комплектация
 
     public static void Complectation() throws IOException {
 

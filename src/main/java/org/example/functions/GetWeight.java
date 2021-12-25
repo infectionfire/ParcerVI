@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Weight {//вес, первая строка - брутто, остальные перекидываем в габариты
+public class GetWeight {//вес, первая строка - брутто, остальные перекидываем в габариты
 
     public static void Weigth() throws IOException {
         //берем страницу
