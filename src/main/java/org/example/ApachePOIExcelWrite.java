@@ -30,7 +30,7 @@ public class ApachePOIExcelWrite {
             Cell cell = row.createCell(colNum);
             Cell cellPhoto = row.createCell(colNum+1);
             cell.setCellValue(crm);
-            cellPhoto.setCellValue(ParserPage.photos.get(index++).replaceAll("68x60", "800x800"));
+            cellPhoto.setCellValue(ParserPage.photos.get(index++).replace("68x60", "800x800"));
         }
         FileOutputStream outputStream = new FileOutputStream(FILE_NAME);
         workbook.write(outputStream);
