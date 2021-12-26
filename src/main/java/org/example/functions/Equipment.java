@@ -7,11 +7,16 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 
-public class GetEquipment {//комплектация
+public class Equipment {//комплектация
 
-    public static void Complectation() throws IOException {
 
-        Document page = ParserPage.getPage();
+    private Equipment() {
+        throw new IllegalStateException("Utility class");
+    }
+
+    public static void CreateComplectation() throws IOException {
+
+        Document page = ParserPage.getPagePrint();
 
         Element tableParameter = page.select("div.fs-13.c-gray3.complect").first();
         if (tableParameter!=null){

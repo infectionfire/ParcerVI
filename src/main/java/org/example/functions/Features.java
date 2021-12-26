@@ -6,12 +6,16 @@ import org.jsoup.nodes.Element;
 
 import java.io.IOException;
 
-public class GetFeatures {
-//доделать метод
+public class Features {
 
-    public static void Features()  throws IOException {
+    private Features() {
+        throw new IllegalStateException("Utility class");
+    }
+    //доделать метод
 
-        Document page = ParserPage.getPageUnprint();
+    public static void CreateFeatures()  throws IOException {
+
+        Document page = ParserPage.getPage();
         Element element = page.select("div.content-block").first();
         if (element!=null){
             //добавить зависимости от других параметров, добавить обработчик
@@ -36,7 +40,7 @@ public class GetFeatures {
 
             ParserPage.features=strg.strip()+"\n\n";
         }else {
-         ParserPage.features="\n\n";;}
+         ParserPage.features="\n\n";}
         }
 
 }

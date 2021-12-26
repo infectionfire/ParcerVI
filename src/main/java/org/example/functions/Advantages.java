@@ -7,11 +7,15 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 
-public class GetAdvantages {//особенности
+public class Advantages {//особенности
 
-    public static void Advantages() throws IOException {
+    private Advantages() {
+        throw new IllegalStateException("Utility class");
+    }
+
+    public static void CreateAdvantages() throws IOException {
         //берем ссылку на товар
-        Document page = ParserPage.getPage();
+        Document page = ParserPage.getPagePrint();
         //выбираем поле для парсинга
         Element tableParameter = page.select("td[id=tab2_content]").first();
         //проверка на пустое поле

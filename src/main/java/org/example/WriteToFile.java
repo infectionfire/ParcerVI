@@ -1,9 +1,9 @@
 package org.example;
 
 
-
-import java.io.*;
-
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 public class WriteToFile {
 
@@ -23,6 +23,7 @@ public class WriteToFile {
         pw.println(ParserPage.CreateMassive());
         pw.println("Successful!");
         System.out.println("Done!");
+
         pw.close();
         }
 }

@@ -9,8 +9,8 @@ import java.io.IOException;
 public class PhotoCrawler {
     public static String photo = "";
 
-    public PhotoCrawler() throws IOException {
-        Document page = ParserPage.getPageUnprint();
+    public static void PhotoCrawler() throws IOException {
+        Document page = ParserPage.getPage();
         Element imageElement = page.select("div.item").first();
         photo+=imageElement;
 
@@ -20,10 +20,5 @@ public class PhotoCrawler {
         String[] ph = photo.split("\"");
         photo=ph[1];
         }
-
-    public static void main(String[] args) throws IOException {
-        new PhotoCrawler();
-        System.out.println(photo);
-    }
 }
 

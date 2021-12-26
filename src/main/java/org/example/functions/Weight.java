@@ -9,11 +9,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GetWeight {//вес, первая строка - брутто, остальные перекидываем в габариты
+public class Weight {//вес, первая строка - брутто, остальные перекидываем в габариты
 
-    public static void Weigth() throws IOException {
+
+    private Weight() {
+        throw new IllegalStateException("Utility class");
+    }
+
+    public static void CreateWeigth() throws IOException {
         //берем страницу
-        Document page = ParserPage.getPage();
+        Document page = ParserPage.getPagePrint();
         //выбираем поля
         Element tableParameter = page.select("div.fs-13.lh-20.c-gray3").first();
         ParserPage.weight = "<strong>Габаритные размеры:</strong>\n\n";

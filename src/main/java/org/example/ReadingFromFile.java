@@ -8,8 +8,9 @@ import java.util.Scanner;
 
 public class ReadingFromFile {
 
+
     //создаем массив из списка ссылок
-    public static List readPrintValue() throws FileNotFoundException {
+    public static List<String> readPrintValue() throws FileNotFoundException {
         File file = new File("test.txt");
 
         Scanner sc = new Scanner(file);
@@ -17,6 +18,7 @@ public class ReadingFromFile {
         while (sc.hasNextLine()) {
             list.add(sc.nextLine());
         }
+        sc.close();
         return list;
 
     }

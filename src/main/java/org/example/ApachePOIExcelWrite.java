@@ -7,44 +7,34 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
-
 import static org.example.ParserPage.CreateMassive;
 
 public class ApachePOIExcelWrite {
 
-    private static final String FILE_NAME = "ParcerFile.xlsx";
+    private static final String FILE_NAME = "ParserFile.xlsx";
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         XSSFWorkbook workbook = new XSSFWorkbook();
-        XSSFSheet sheet = workbook.createSheet("ParcerFile");
+        XSSFSheet sheet = workbook.createSheet("ParserFile");
 
-        int rowNum = 0;
-        System.out.println("Creating excel");
-        List<String> crms = CreateMassive();
-        int colNum = 0;
-        for (int i =0; i< crms.size();i++) {
+        int rowNum = 0;//счетчик строк
+        int colNum = 0;//фиксируем столбец для вывода
+        int index = 0;
+        List<String> createMassiveForXLSX = CreateMassive();
+        for (String crm : createMassiveForXLSX) {//цикл создания параметризированного списка
             Row row = sheet.createRow(rowNum++);
             Cell cell = row.createCell(colNum);
-            cell.setCellValue((String) crms.get(i));
-
-            }
-
-        try {
-            FileOutputStream outputStream = new FileOutputStream(FILE_NAME);
-            workbook.write(outputStream);
-            workbook.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+            Cell cellPhoto = row.createCell(colNum+1);
+            cell.setCellValue(crm);
+            cellPhoto.setCellValue(ParserPage.photos.get(index++));
         }
-
-        System.out.println("Done");
+        FileOutputStream outputStream = new FileOutputStream(FILE_NAME);
+        workbook.write(outputStream);
+        outputStream.close();
+        workbook.close();
     }
 }

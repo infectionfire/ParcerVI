@@ -9,10 +9,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GetChatacteristics {//технические характеристики
+public class Chatacteristics {//технические характеристики
 
-    public static void Characteristics() throws IOException {
-        Document page = ParserPage.getPage();
+
+    private Chatacteristics() {
+        throw new IllegalStateException("Utility class");
+    }
+
+    public static void CreateCharacteristics() throws IOException {
+        Document page = ParserPage.getPagePrint();
         Element tableParameter = page.select("table[class=fs-13]").first();
         ParserPage.characteristics = "<strong>Технические характеристики:</strong>\n\n";
         if (tableParameter!=null) {
