@@ -100,7 +100,7 @@
           <configuration>
             <archive>
               <manifest>
-                <mainClass>org.example.WriteToFile</mainClass>
+                <mainClass>org.example.ApachePOIExcelWrite</mainClass>
               </manifest>
             </archive>
           </configuration>
