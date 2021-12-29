@@ -8,7 +8,7 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 
-public class Equipment {//комплектация
+public class Equipment extends GetPageVIAndPrint{//комплектация
 
 
     private Equipment() {
@@ -17,26 +17,26 @@ public class Equipment {//комплектация
 
     public static void CreateComplectation() throws IOException {
 
-        Document page = GetPageVIAndPrint.getPagePrint();
+        Document page = getPagePrint();
 
         Element tableParameter = page.select("div.fs-13.c-gray3.complect").first();
         if (tableParameter!=null){
-            ParserPage.equipment = "<strong>Комплектация:</strong>\n\n";
+            ParserPage.equipment = new StringBuilder("<strong>Комплектация:</strong>\n\n");
             Elements names = tableParameter.select("ul");
             Elements values = names.select("li");
 
             for (Element value : values) {
                 String theme = value.select("li").text();
-                ParserPage.equipment += "- " + theme + ";\n";
+                ParserPage.equipment.append("- ").append(theme).append(";\n");
                 }
-            ParserPage.equipment = ParserPage.equipment.replace(";;",";");
+            ParserPage.equipment = new StringBuilder(ParserPage.equipment.toString().replace(";;", ";"));
 
             StringBuilder stringBuilder = new StringBuilder(ParserPage.equipment);
             stringBuilder.replace(stringBuilder.length()-2,stringBuilder.length()-1,".");
-            ParserPage.equipment = stringBuilder+"\n";
-            ParserPage.equipment = ParserPage.equipment.replace("..",".");
+            ParserPage.equipment = new StringBuilder(stringBuilder + "\n");
+            ParserPage.equipment = new StringBuilder(ParserPage.equipment.toString().replace("..", "."));
             }else{
-            ParserPage.equipment = "<strong>Комплектация:</strong>\n\n\n";
+            ParserPage.equipment = new StringBuilder("<strong>Комплектация:</strong>\n\n\n");
         }
     }
 }

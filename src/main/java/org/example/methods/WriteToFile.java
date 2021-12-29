@@ -24,7 +24,6 @@ public class WriteToFile {
     public static void main(String[] args){
         pw.println(ParserPage.CreateMassive());
         pw.println("Successful!");
-        System.out.println("Done!");
         pw.close();
         }
 }

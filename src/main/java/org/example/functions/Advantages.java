@@ -8,34 +8,30 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 
-public class Advantages {//особенности
+public class Advantages extends GetPageVIAndPrint {//особенности
 
     private Advantages() {
         throw new IllegalStateException("Utility class");
     }
 
     public static void CreateAdvantages() throws IOException {
-        //берем ссылку на товар
-        Document page = GetPageVIAndPrint.getPagePrint();
-        //выбираем поле для парсинга
-        Element tableParameter = page.select("td[id=tab2_content]").first();
-        //проверка на пустое поле
-        ParserPage.advantages = "<strong>Особенности:</strong>\n\n";
-        if (tableParameter!=null) {
-            //вытаскиваем инфу из маркированного списка
-            Elements names = tableParameter.select("ul");
+
+        Document page = getPagePrint();//берем ссылку на товар
+        Element tableParameter = page.select("td[id=tab2_content]").first();//выбираем поле для парсинга
+        ParserPage.advantages = new StringBuilder("<strong>Особенности:</strong>\n\n");
+        if (tableParameter!=null) {//проверка на пустое поле
+            Elements names = tableParameter.select("ul");//вытаскиваем инфу из маркированного списка
             Elements values = names.select("li");
-            //цикл добавляет значения к строке, попутно форматируя ее
-            for (Element value : values) {
+            for (Element value : values) {//цикл добавляет значения к строке, попутно форматируя ее
                 String theme = value.select("li").text();
-                ParserPage.advantages += "- " + theme + ";\n";
+                ParserPage.advantages.append("- ").append(theme).append(";\n");
             }
         }
-        ParserPage.advantages = ParserPage.advantages.replace(";;",";");
-        if(ParserPage.advantages.endsWith(".;\n"))
+        ParserPage.advantages = new StringBuilder(ParserPage.advantages.toString().replace(";;", ";"));
+        if(ParserPage.advantages.toString().endsWith(".;\n"))
         {
-            ParserPage.advantages = ParserPage.advantages.replace(".;\n",".\n");
+            ParserPage.advantages = new StringBuilder(ParserPage.advantages.toString().replace(".;\n", ".\n"));
         }
-        ParserPage.advantages += "\n";
+        ParserPage.advantages.append("\n");
     }
 }

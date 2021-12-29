@@ -10,17 +10,17 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Chatacteristics {//технические характеристики
+public class Characteristics extends GetPageVIAndPrint{//технические характеристики
 
 
-    private Chatacteristics() {
+    private Characteristics() {
         throw new IllegalStateException("Utility class");
     }
 
     public static void CreateCharacteristics() throws IOException {
-        Document page = GetPageVIAndPrint.getPagePrint();
+        Document page = getPagePrint();
         Element tableParameter = page.select("table[class=fs-13]").first();
-        ParserPage.characteristics = "<strong>Технические характеристики:</strong>\n\n";
+        ParserPage.characteristics = new StringBuilder("<strong>Технические характеристики:</strong>\n\n");
         if (tableParameter!=null) {
             Elements names = tableParameter.select("tr");
             Elements values = names.select("tr");
@@ -31,13 +31,13 @@ public class Chatacteristics {//технические характеристи�
             }
             for (int i = 0; i < characters.size(); i++) {
                 if (i != characters.size() - 1) {
-                    ParserPage.characteristics += characters.get(i) + ";\n";
+                    ParserPage.characteristics.append(characters.get(i)).append(";\n");
                 } else {
-                    ParserPage.characteristics += characters.get(i) + ".\n";
+                    ParserPage.characteristics.append(characters.get(i)).append(".\n");
                 }
 
             }
-            ParserPage.characteristics += "\n";
+            ParserPage.characteristics.append("\n");
         }
     }
 }

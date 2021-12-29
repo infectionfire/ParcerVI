@@ -7,7 +7,7 @@ import org.jsoup.nodes.Element;
 
 import java.io.IOException;
 
-public class Features {
+public class Features extends GetPageVI{
 
     private Features() {
         throw new IllegalStateException("Utility class");
@@ -16,32 +16,31 @@ public class Features {
 
     public static void CreateFeatures()  throws IOException {
 
-        Document page = GetPageVI.getPage();
+        Document page = getPage();
         Element element = page.select("div.content-block").first();
         if (element!=null){
             //добавить зависимости от других параметров, добавить обработчик
             //обработка выдачи, завернуть в массив для работы с О1 через, хз сколько памяти сожрет
-            String strg = element.toString().replace("<div itemprop=\"description\" class=\"content-block\">", "");
-            strg = strg.replaceAll("<p style=\"text-align:justify\">","");
-            strg = strg.replaceAll("<p style=\"text-align: justify;\">","");
-            strg = strg.replaceAll("<li style=\"text-align:justify\">","");
-            strg = strg.replaceAll("<li style=\"text-align: justify;\">","");
-            strg = strg.replaceAll("<p style=\"text-align:justify;\">","");
-            strg = strg.replaceAll("<strong>", "");
-            strg = strg.replaceAll("</strong>","");
-            strg = strg.replaceAll("</p>","");
-            strg = strg.replaceAll("</div>","");
-            strg = strg.replaceAll("&nbsp;","");
-            strg = strg.replaceAll("<p>","");
-            strg = strg.replaceAll("<li>","");
-            strg = strg.replaceAll("</li>","");
-            strg = strg.replaceAll("<ul>","");
-            strg = strg.replaceAll("</ul>","");
-            strg = strg.replaceAll("\n","");
-
-            ParserPage.features=strg.strip()+"\n\n";
+            ParserPage.features = new StringBuilder(element.toString()
+                    .replace("<div itemprop=\"description\" class=\"content-block\">", "")
+                    .replaceAll("<p style=\"text-align:justify\">","")
+                    .replaceAll("<p style=\"text-align: justify;\">","")
+                        .replaceAll("<li style=\"text-align:justify\">","")
+                        .replaceAll("<li style=\"text-align: justify;\">","")
+                        .replaceAll("<p style=\"text-align:justify;\">","")
+                        .replaceAll("<strong>", "")
+                        .replaceAll("</strong>","")
+                        .replaceAll("</p>","")
+                        .replaceAll("</div>","")
+                        .replaceAll("&nbsp;","")
+                        .replaceAll("<p>","")
+                        .replaceAll("<li>","")
+                        .replaceAll("</li>","")
+                        .replaceAll("<ul>","")
+                        .replaceAll("</ul>","")
+                        .replaceAll("\n","")+"\n\n");
         }else {
-         ParserPage.features="\n\n";}
+         ParserPage.features= new StringBuilder("\n\n");}
         }
 
 }

@@ -38,8 +38,6 @@ public class ApachePOIExcelWrite {
 
         FileOutputStream outputStream = new FileOutputStream(FILE_NAME);
         workbook.write(outputStream);
-//        logger.info("Это информационное сообщение!");
-
         outputStream.close();
         workbook.close();
     }
