@@ -1,6 +1,7 @@
 package org.example.functions;
 
-import org.example.ParserPage;
+import org.example.page.GetPageVIAndPrint;
+import org.example.page.ParserPage;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -15,7 +16,7 @@ public class Advantages {//особенности
 
     public static void CreateAdvantages() throws IOException {
         //берем ссылку на товар
-        Document page = ParserPage.getPagePrint();
+        Document page = GetPageVIAndPrint.getPagePrint();
         //выбираем поле для парсинга
         Element tableParameter = page.select("td[id=tab2_content]").first();
         //проверка на пустое поле

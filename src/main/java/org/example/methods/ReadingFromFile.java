@@ -1,4 +1,4 @@
-package org.example;
+package org.example.methods;
 
 import java.io.File;
 import java.io.FileNotFoundException;

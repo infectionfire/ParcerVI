@@ -1,6 +1,7 @@
 package org.example.functions;
 
-import org.example.ParserPage;
+import org.example.page.GetPageVIAndPrint;
+import org.example.page.ParserPage;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -16,7 +17,7 @@ public class Equipment {//комплектация
 
     public static void CreateComplectation() throws IOException {
 
-        Document page = ParserPage.getPagePrint();
+        Document page = GetPageVIAndPrint.getPagePrint();
 
         Element tableParameter = page.select("div.fs-13.c-gray3.complect").first();
         if (tableParameter!=null){

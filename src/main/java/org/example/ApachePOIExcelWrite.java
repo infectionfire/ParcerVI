@@ -7,10 +7,13 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.example.page.ParserPage;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
-import static org.example.ParserPage.CreateMassive;
+
+import static org.example.page.ParserPage.*;
 
 public class ApachePOIExcelWrite {
 
@@ -32,8 +35,11 @@ public class ApachePOIExcelWrite {
             cell.setCellValue(crm);
             cellPhoto.setCellValue(ParserPage.photos.get(index++).replace("68x60", "800x800"));
         }
+
         FileOutputStream outputStream = new FileOutputStream(FILE_NAME);
         workbook.write(outputStream);
+//        logger.info("Это информационное сообщение!");
+
         outputStream.close();
         workbook.close();
     }

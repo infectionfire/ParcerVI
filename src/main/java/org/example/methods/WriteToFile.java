@@ -1,5 +1,7 @@
-package org.example;
+package org.example.methods;
 
+
+import org.example.page.ParserPage;
 
 import java.io.File;
 import java.io.IOException;
@@ -23,7 +25,6 @@ public class WriteToFile {
         pw.println(ParserPage.CreateMassive());
         pw.println("Successful!");
         System.out.println("Done!");
-
         pw.close();
         }
 }

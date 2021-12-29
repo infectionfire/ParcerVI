@@ -1,6 +1,7 @@
 package org.example.functions;
 
-import org.example.ParserPage;
+import org.example.page.GetPageVIAndPrint;
+import org.example.page.ParserPage;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -17,7 +18,7 @@ public class Chatacteristics {//технические характеристи�
     }
 
     public static void CreateCharacteristics() throws IOException {
-        Document page = ParserPage.getPagePrint();
+        Document page = GetPageVIAndPrint.getPagePrint();
         Element tableParameter = page.select("table[class=fs-13]").first();
         ParserPage.characteristics = "<strong>Технические характеристики:</strong>\n\n";
         if (tableParameter!=null) {

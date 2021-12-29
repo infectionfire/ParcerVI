@@ -1,6 +1,7 @@
 package org.example.functions;
 
-import org.example.ParserPage;
+import org.example.page.GetPageVI;
+import org.example.page.ParserPage;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
@@ -15,7 +16,7 @@ public class Features {
 
     public static void CreateFeatures()  throws IOException {
 
-        Document page = ParserPage.getPage();
+        Document page = GetPageVI.getPage();
         Element element = page.select("div.content-block").first();
         if (element!=null){
             //добавить зависимости от других параметров, добавить обработчик

@@ -1,6 +1,6 @@
 package org.example.functions;
 
-import org.example.ParserPage;
+import org.example.page.GetPageVI;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import java.io.IOException;
@@ -10,7 +10,7 @@ public class PhotoCrawler {
     public static String photo = "";
 
     public static void PhotoCrawler() throws IOException {
-        Document page = ParserPage.getPage();
+        Document page = GetPageVI.getPage();
         Element imageElement = page.select("div.item").first();
         photo+=imageElement;
 

@@ -1,6 +1,7 @@
 package org.example.functions;
 
-import org.example.ParserPage;
+import org.example.page.GetPageVIAndPrint;
+import org.example.page.ParserPage;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -18,7 +19,7 @@ public class Weight {//вес, первая строка - брутто, ост�
 
     public static void CreateWeigth() throws IOException {
         //берем страницу
-        Document page = ParserPage.getPagePrint();
+        Document page = GetPageVIAndPrint.getPagePrint();
         //выбираем поля
         Element tableParameter = page.select("div.fs-13.lh-20.c-gray3").first();
         ParserPage.weight = "<strong>Габаритные размеры:</strong>\n\n";
