@@ -30,8 +30,8 @@ public class ApachePOIExcelWrite {
         List<String> createMassiveForXLSX = CreateMassive();
         for (String crm : createMassiveForXLSX) {//цикл создания параметризированного списка
             Row row = sheet.createRow(rowNum++);
-            Cell cell = row.createCell(colNum);
-            Cell cellPhoto = row.createCell(colNum+1);
+            Cell cell = row.createCell(colNum);//первый столбец, описание товаров
+            Cell cellPhoto = row.createCell(colNum+1);//второй столбец, ссылки на фото
             cell.setCellValue(crm);
             cellPhoto.setCellValue(ParserPage.photos.get(index++).replace("68x60", "800x800"));
         }

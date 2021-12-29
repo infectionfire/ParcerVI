@@ -13,12 +13,11 @@ public class PhotoCrawler extends GetPageVI{
     public static void PhotoCrawler() throws IOException {
         Document page = getPage();
         Element imageElement = page.select("div.item").first();
-        photo+=imageElement;
-        photo=photo.replaceAll("<div class=\"stage\" data-behavior=\"stage\">","")
+        photo=imageElement.toString().replaceAll("<div class=\"stage\" data-behavior=\"stage\">","")
                 .replaceAll("<div class=\"item -active\" data-behavior=\"item\">","")
-                .replaceAll("<img src=\"data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7\" data-src=","");
+                .replaceAll("<img src=\"data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7\" data-src=\"","");
         String[] ph = photo.split("\"");
-        ParserPage.photo= new StringBuilder(ph[1]);
+        photo= ph[0];
         }
 }
 
