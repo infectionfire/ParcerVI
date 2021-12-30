@@ -6,6 +6,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 import java.io.IOException;
+import java.util.List;
 
 public class Features extends GetPageVI{
 
@@ -22,23 +23,27 @@ public class Features extends GetPageVI{
             //добавить зависимости от других параметров, добавить обработчик
             //обработка выдачи, завернуть в массив для работы с О1 через, хз сколько памяти сожрет
             ParserPage.features = new StringBuilder(element.toString()
-                    .replace("<div itemprop=\"description\" class=\"content-block\">", "")
-                    .replaceAll("<p style=\"text-align:justify\">","")
-                    .replaceAll("<p style=\"text-align: justify;\">","")
-                        .replaceAll("<li style=\"text-align:justify\">","")
-                        .replaceAll("<li style=\"text-align: justify;\">","")
-                        .replaceAll("<p style=\"text-align:justify;\">","")
-                        .replaceAll("<strong>", "")
-                        .replaceAll("</strong>","")
-                        .replaceAll("</p>","")
-                        .replaceAll("</div>","")
-                        .replaceAll("&nbsp;","")
-                        .replaceAll("<p>","")
-                        .replaceAll("<li>","")
-                        .replaceAll("</li>","")
-                        .replaceAll("<ul>","")
-                        .replaceAll("</ul>","")
-                        .replaceAll("\n","")+"\n\n");
+                    .replace("<div itemprop=\"description\" class=\"content-block\">", " ")
+                    .replaceAll("<p style=\"text-align:justify\">"," ")
+                    .replaceAll("<p style=\"text-align: justify;\">"," ")
+                        .replaceAll("<li style=\"text-align:justify\">"," ")
+                        .replaceAll("<li style=\"text-align: justify;\">"," ")
+                        .replaceAll("<p style=\"text-align:justify;\">"," ")
+                        .replaceAll("<strong>", " ")
+                        .replaceAll("</strong>"," ")
+                        .replaceAll("</p>"," ")
+                        .replaceAll("</br>"," ")
+                        .replaceAll("<br>"," ")
+                        .replaceAll("</div>"," ")
+                        .replaceAll("&nbsp;"," ")
+                        .replaceAll("<p>"," ")
+                        .replaceAll("<li>"," ")
+                        .replaceAll("</li>"," ")
+                        .replaceAll("<ul>"," ")
+                        .replaceAll("</ul>"," ")
+                        .replaceAll("\n"," "));
+            List<String > str = List.of(ParserPage.features.toString().split("<"));
+            ParserPage.features = new StringBuilder(str.get(0).replace("  "," ").replace("  "," ")).append("\n\n");
         }else {
          ParserPage.features= new StringBuilder("\n\n");}
         }
