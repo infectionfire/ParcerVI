@@ -8,6 +8,8 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 
+import static org.example.page.ParserPage.setEquipment;
+
 /**
  * Формирование поля "Комплектация" для описания товарной карточки
  */
@@ -19,27 +21,26 @@ public class Equipment extends GetPageVIAndPrint{
     }
 
     public static void CreateComplectation() throws IOException {
-
+        StringBuilder equipment = new StringBuilder("<strong>Комплектация:</strong>\n\n");
         Document page = getPagePrint();
 
         Element tableParameter = page.select("div.fs-13.c-gray3.complect").first();
         if (tableParameter!=null){
-            ParserPage.equipment = new StringBuilder("<strong>Комплектация:</strong>\n\n");
+
             Elements names = tableParameter.select("ul");
             Elements values = names.select("li");
 
             for (Element value : values) {
                 String theme = value.select("li").text();
-                ParserPage.equipment.append("- ").append(theme).append(";\n");
+                equipment.append("- ").append(theme).append(";\n");
                 }
-            ParserPage.equipment = new StringBuilder(ParserPage.equipment.toString().replace(";;", ";"));
+            equipment = new StringBuilder(equipment.toString().replace(";;", ";"));
 
-            StringBuilder stringBuilder = new StringBuilder(ParserPage.equipment);
+            StringBuilder stringBuilder = new StringBuilder(equipment);
             stringBuilder.replace(stringBuilder.length()-2,stringBuilder.length()-1,".");
-            ParserPage.equipment = new StringBuilder(stringBuilder + "\n");
-            ParserPage.equipment = new StringBuilder(ParserPage.equipment.toString().replace("..", "."));
-            }else{
-            ParserPage.equipment = new StringBuilder("<strong>Комплектация:</strong>\n\n\n");
-        }
+            equipment = new StringBuilder(stringBuilder + "\n");
+            equipment = new StringBuilder(equipment.toString().replace("..", "."));
+            }
+        setEquipment(equipment);
     }
 }

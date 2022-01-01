@@ -1,7 +1,6 @@
 package org.example.functions;
 
 import org.example.page.GetPageVIAndPrint;
-import org.example.page.ParserPage;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -9,6 +8,8 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.example.page.ParserPage.setCharacteristics;
 
 /**
  * Формирование поля "технические характеристики" для описания товарной карточки
@@ -20,11 +21,11 @@ public class Characteristics extends GetPageVIAndPrint{//технические 
     private Characteristics() {
         throw new IllegalStateException("Utility class");
     }
+    static StringBuilder charact = new StringBuilder("<strong>Технические характеристики:</strong>\n\n");
 
     public static void CreateCharacteristics() throws IOException {
         Document page = getPagePrint();
         Element tableParameter = page.select("table[class=fs-13]").first();
-        ParserPage.characteristics = new StringBuilder("<strong>Технические характеристики:</strong>\n\n");
         if (tableParameter!=null) {
             Elements names = tableParameter.select("tr");
             Elements values = names.select("tr");
@@ -35,13 +36,12 @@ public class Characteristics extends GetPageVIAndPrint{//технические 
             }
             for (int i = 0; i < characters.size(); i++) {
                 if (i != characters.size() - 1) {
-                    ParserPage.characteristics.append(characters.get(i)).append(";\n");
+                    charact.append(characters.get(i)).append(";\n");
                 } else {
-                    ParserPage.characteristics.append(characters.get(i)).append(".\n");
+                    charact.append(characters.get(i)).append(".\n");
                 }
-
             }
-            ParserPage.characteristics.append("\n");
+            setCharacteristics(charact.toString()+"\n");
         }
     }
 }

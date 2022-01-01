@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.example.page.ParserPage.setWeight;
+
 public class Weight {//вес, первая строка - брутто, остальные перекидываем в габариты
 
 
@@ -18,11 +20,12 @@ public class Weight {//вес, первая строка - брутто, ост�
     }
 
     public static void CreateWeigth() throws IOException {
+        StringBuilder weight = new StringBuilder("<strong>Габаритные размеры:</strong>\n\n");
         //берем страницу
         Document page = GetPageVIAndPrint.getPagePrint();
         //выбираем поля
         Element tableParameter = page.select("div.fs-13.lh-20.c-gray3").first();
-        ParserPage.weight = new StringBuilder("<strong>Габаритные размеры:</strong>\n\n");
+
         if (tableParameter!=null) {
             //выбираем вложение
             Elements names = tableParameter.select("b");
@@ -35,14 +38,14 @@ public class Weight {//вес, первая строка - брутто, ост�
             }
             for (int i = 0; i < 4; i++) {
                 if (i == 0) {
-                    ParserPage.weight.append("- Вес брутто: ").append(values1.get(i)).append(" кг;\n- Габаритные размеры (ДхШхВ): ");
+                    weight.append("- Вес брутто: ").append(values1.get(i)).append(" кг;\n- Габаритные размеры (ДхШхВ): ");
                 } else if (i != 3) {
-                    ParserPage.weight.append(values1.get(i)).append("x");
+                    weight.append(values1.get(i)).append("x");
                 } else {
-                    ParserPage.weight.append(values1.get(i));
+                    weight.append(values1.get(i));
                 }
             }
         }
-        ParserPage.weight.append(" мм.\n\n");
+        setWeight(weight.append(" мм.\n\n"));
     }
 }
