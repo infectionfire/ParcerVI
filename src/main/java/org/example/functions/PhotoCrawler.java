@@ -5,11 +5,15 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import java.io.IOException;
 
+/**
+ * Парсит страницу и берет первое фото товара
+ * можно переделать, сделать сплит через " и вытаскивать ссылки через endWith
+ */
 
 public class PhotoCrawler extends GetPageVI{
     public static String photo = "";
 
-    public static void PhotoCrawler() throws IOException {
+    public static void PhotoUrlsCreate() throws IOException {
         Document page = getPage();
         Element imageElement = page.select("div.item").first();
         photo=imageElement.toString().replaceAll("<div class=\"stage\" data-behavior=\"stage\">","")

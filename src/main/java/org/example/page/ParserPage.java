@@ -27,8 +27,8 @@ public class ParserPage {
                 Advantages.CreateAdvantages();
                 Equipment.CreateComplectation();
                 Weight.CreateWeigth();
-                PhotoCrawler.PhotoCrawler();
-                InstrCrawler.InstrCrawler();
+                PhotoCrawler.PhotoUrlsCreate();
+                InstrCrawler.InstrUrlsCreate();
                 TTX.append(features).append(characteristics).append(advantages).append(equipment).append(weight);
                 photos.add(PhotoCrawler.photo);
                 instr.add(InstrCrawler.instr);

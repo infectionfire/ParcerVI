@@ -6,11 +6,15 @@ import org.jsoup.nodes.Element;
 
 import java.io.IOException;
 
+/**
+ * Парсит страницу и берет ссылку на инструкцию если она есть
+ * в случае отсутствия инструкции в формате PDF возвращает пустую строку для заполнения ячейки в эксель
+ */
 
 public class InstrCrawler extends GetPageVI{
     public static String instr = "";
 
-    public static void InstrCrawler() throws IOException {
+    public static void InstrUrlsCreate() throws IOException {
         Document page = getPage();
         Element imageElement = page.select("ul.unordered-list.-links.spoiler.-download").first();
         instr=imageElement.toString();

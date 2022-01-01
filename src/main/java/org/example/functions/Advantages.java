@@ -8,6 +8,10 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 
+/**
+ * Формирование поля особенности для описания товарной карточки
+ */
+
 public class Advantages extends GetPageVIAndPrint {//особенности
 
     private Advantages() {

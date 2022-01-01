@@ -10,6 +10,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Формирование поля "технические характеристики" для описания товарной карточки
+ */
+
 public class Characteristics extends GetPageVIAndPrint{//технические характеристики
 
 

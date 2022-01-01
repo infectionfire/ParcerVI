@@ -8,8 +8,11 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 
-public class Equipment extends GetPageVIAndPrint{//комплектация
+/**
+ * Формирование поля "Комплектация" для описания товарной карточки
+ */
 
+public class Equipment extends GetPageVIAndPrint{
 
     private Equipment() {
         throw new IllegalStateException("Utility class");
