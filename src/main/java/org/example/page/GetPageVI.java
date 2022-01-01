@@ -10,7 +10,9 @@ import java.net.URL;
 public class GetPageVI {
     public static Document getPage() throws IOException {
             //меняем значение для выбора ссылки, отсчет с нуля
-            String url = ReadingFromFile.readPrintValue().get(ParserPage.number);
+            String url = ReadingFromFile
+                    .readPrintValue()
+                    .get(ParserPage.number);
             return Jsoup.parse(new URL(url), 2000);
         }
 }

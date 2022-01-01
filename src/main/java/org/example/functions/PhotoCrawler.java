@@ -1,7 +1,6 @@
 package org.example.functions;
 
 import org.example.page.GetPageVI;
-import org.example.page.ParserPage;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import java.io.IOException;
@@ -17,7 +16,7 @@ public class PhotoCrawler extends GetPageVI{
                 .replaceAll("<div class=\"item -active\" data-behavior=\"item\">","")
                 .replaceAll("<img src=\"data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7\" data-src=\"","");
         String[] ph = photo.split("\"");
-        photo= ph[0];
+        photo= ph[0].replace(".jpg", "").strip();
         }
 }
 

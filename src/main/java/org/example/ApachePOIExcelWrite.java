@@ -25,15 +25,18 @@ public class ApachePOIExcelWrite {
         XSSFSheet sheet = workbook.createSheet("ParserFile");
 
         int rowNum = 0;//счетчик строк
-        int colNum = 0;//фиксируем столбец для вывода
         int index = 0;
         List<String> createMassiveForXLSX = CreateMassive();
         for (String crm : createMassiveForXLSX) {//цикл создания параметризированного списка
             Row row = sheet.createRow(rowNum++);
-            Cell cell = row.createCell(colNum);//первый столбец, описание товаров
-            Cell cellPhoto = row.createCell(colNum+1);//второй столбец, ссылки на фото
+            Cell cell = row.createCell(0);//первый столбец, описание товаров
+            Cell cellPhoto = row.createCell(1);//второй столбец, ссылки на фото
+            Cell cellInstr = row.createCell(2);//третий столбец, ссылки на фото
             cell.setCellValue(crm);
-            cellPhoto.setCellValue(ParserPage.photos.get(index++).replace("68x60", "800x800"));
+            cellInstr.setCellValue(ParserPage.instr.get(index));
+            cellPhoto.setCellValue(ParserPage.photos.get(index).replace("68x60", "800x800"));
+
+            index++;
         }
 
         FileOutputStream outputStream = new FileOutputStream(FILE_NAME);
