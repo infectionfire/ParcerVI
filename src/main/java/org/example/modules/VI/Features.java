@@ -1,12 +1,13 @@
-package org.example.functions;
+package org.example.modules.VI;
 
 import org.example.methods.HtmlToText;
-import org.example.page.GetPageVI;
+import org.example.pageProcessing.GetPageVI;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+
 import java.io.IOException;
 
-import static org.example.page.ParserPage.setFeatures;
+import static org.example.pageProcessing.StructureCardBuilder.setFeatures;
 
 /**
  *

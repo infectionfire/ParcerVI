@@ -1,5 +1,6 @@
-package org.example.page;
+package org.example.pageProcessing;
 
+import org.example.config.ParcerPageConfiguration;
 import org.example.methods.ReadingFromFile;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -17,7 +18,7 @@ public class GetPageVIAndPrint {
     //меняем значение для выбора ссылки, отсчет с нуля
     String url = ReadingFromFile
             .readPrintValue()
-            .get(ParserPage.number)+"/print/";
+            .get(ParcerPageConfiguration.getNumber())+"/print/";
     return Jsoup.parse(new URL(url), 2000);
 }
 }

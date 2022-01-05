@@ -1,7 +1,6 @@
-package org.example.functions;
+package org.example.modules.VI;
 
-import org.example.page.GetPageVIAndPrint;
-import org.example.page.ParserPage;
+import org.example.pageProcessing.GetPageVIAndPrint;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -10,7 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.example.page.ParserPage.setWeight;
+import static org.example.pageProcessing.StructureCardBuilder.setWeight;
 
 public class Weight {//вес, первая строка - брутто, остальные перекидываем в габариты
 

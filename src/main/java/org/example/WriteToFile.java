@@ -1,12 +1,11 @@
-package org.example.methods;
+package org.example;
 
-
-
-import org.example.page.ParserPage;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+
+import static org.example.config.ParcerPageConfiguration.InformationCollector;
 
 /**
  * Записывает информацию о товаре в текстовый файл testFile.txt
@@ -27,7 +26,7 @@ public class WriteToFile {
     }
 
     public static void main(String[] args){
-        pw.println(ParserPage.CreateMassive());
+        pw.println(InformationCollector());
         pw.println("Successful!");
         pw.close();
 

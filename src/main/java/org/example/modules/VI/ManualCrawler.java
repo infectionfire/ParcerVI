@@ -1,6 +1,6 @@
-package org.example.functions;
+package org.example.modules.VI;
 
-import org.example.page.GetPageVI;
+import org.example.pageProcessing.GetPageVI;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
@@ -14,7 +14,12 @@ import java.io.IOException;
 public class ManualCrawler extends GetPageVI{
     private static String instr = "";
 
-    public static String getManual() {
+    public static void setInstr(String instr) {
+        ManualCrawler.instr = instr;
+    }
+
+    public static String getManual() throws IOException {
+        CreateInstrUrl();
         return instr;
     }
 
@@ -24,10 +29,13 @@ public class ManualCrawler extends GetPageVI{
         instr=imageElement.toString();
         String[] ins = instr.split("href=\"//");
         ins=ins[1].split("\"");
-        instr=ins[0];
+        setInstr(ins[0]);
         if (!instr.endsWith(".pdf")){
-            instr="";
+            setInstr("");
         }
-        }
+    }
+
+
+
 }
 
