@@ -3,6 +3,7 @@ package org.example.functions;
 import org.example.page.GetPageVI;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+
 import java.io.IOException;
 
 /**
@@ -11,7 +12,12 @@ import java.io.IOException;
  */
 
 public class PhotoCrawler extends GetPageVI{
-    public static String photo = "";
+
+    private static String photo = "";
+
+    public static String getPhoto() {
+        return photo;
+    }
 
     public static void PhotoUrlsCreate() throws IOException {
         Document page = getPage();

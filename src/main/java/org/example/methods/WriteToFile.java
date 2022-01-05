@@ -1,6 +1,7 @@
 package org.example.methods;
 
 
+
 import org.example.page.ParserPage;
 
 import java.io.File;
@@ -20,7 +21,6 @@ public class WriteToFile {
     static {
         try {
             pw = new PrintWriter(file);
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -30,6 +30,7 @@ public class WriteToFile {
         pw.println(ParserPage.CreateMassive());
         pw.println("Successful!");
         pw.close();
+
         }
 }
 

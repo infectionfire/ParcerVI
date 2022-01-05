@@ -11,10 +11,14 @@ import java.io.IOException;
  * в случае отсутствия инструкции в формате PDF возвращает пустую строку для заполнения ячейки в эксель
  */
 
-public class InstrCrawler extends GetPageVI{
-    public static String instr = "";
+public class ManualCrawler extends GetPageVI{
+    private static String instr = "";
 
-    public static void InstrUrlsCreate() throws IOException {
+    public static String getManual() {
+        return instr;
+    }
+
+    public static void CreateInstrUrl() throws IOException {
         Document page = getPage();
         Element imageElement = page.select("ul.unordered-list.-links.spoiler.-download").first();
         instr=imageElement.toString();
@@ -24,7 +28,6 @@ public class InstrCrawler extends GetPageVI{
         if (!instr.endsWith(".pdf")){
             instr="";
         }
-
         }
 }
 

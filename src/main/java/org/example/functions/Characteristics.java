@@ -17,7 +17,6 @@ import static org.example.page.ParserPage.setCharacteristics;
 
 public class Characteristics extends GetPageVIAndPrint{//технические характеристики
 
-
     private Characteristics() {
         throw new IllegalStateException("Utility class");
     }
