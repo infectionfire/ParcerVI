@@ -7,7 +7,7 @@ import org.jsoup.nodes.Element;
 
 import java.io.IOException;
 
-import static org.example.pageProcessing.StructureCardBuilder.setFeatures;
+import static org.example.methods.StructureCardBuilder.setFeatures;
 
 /**
  *

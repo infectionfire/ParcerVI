@@ -1,6 +1,5 @@
 package org.example.modules.VI;
 
-import org.example.pageProcessing.GetPageVIAndPrint;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -9,42 +8,45 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.example.pageProcessing.StructureCardBuilder.setWeight;
+import static org.example.methods.StructureCardBuilder.setWeight;
+import static org.example.pageProcessing.GetPageVI.getPage;
 
-public class Weight {//вес, первая строка - брутто, остальные перекидываем в габариты
-
+public class Weight{//вес, первая строка - брутто, остальные перекидываем в габариты
 
     private Weight() {
         throw new IllegalStateException("Utility class");
     }
 
     public static void CreateWeigth() throws IOException {
-        StringBuilder weight = new StringBuilder("<strong>Габаритные размеры:</strong>\n\n");
+        StringBuilder weigh = new StringBuilder("<strong>Габаритные размеры:</strong>\n\n");
         //берем страницу
-        Document page = GetPageVIAndPrint.getPagePrint();
+        Document page = getPage();
         //выбираем поля
-        Element tableParameter = page.select("div.fs-13.lh-20.c-gray3").first();
-
+        Elements tableParameter = page.select("ul.unordered-list");
         if (tableParameter!=null) {
             //выбираем вложение
-            Elements names = tableParameter.select("b");
-            Elements values = names.select("b");
+            Elements names = tableParameter.select("li.item");
+            List<String> listTemp = new ArrayList<>();
             //добавляем
-            List<String> values1 = new ArrayList(4);
-            for (Element value : values) {
-                String theme = value.select("b").text();
-                values1.add(theme);
+            for (Element value : names) {
+                String theme = value.select("li.item").text();
+                listTemp.add(theme);
             }
-            for (int i = 0; i < 4; i++) {
-                if (i == 0) {
-                    weight.append("- Вес брутто: ").append(values1.get(i)).append(" кг;\n- Габаритные размеры (ДхШхВ): ");
-                } else if (i != 3) {
-                    weight.append(values1.get(i)).append("x");
-                } else {
-                    weight.append(values1.get(i));
+            int count = 0;
+            for (int i = 1; i < listTemp.size(); i++) {
+                if (listTemp.get(i-1).equals("Единица товара: Штука")) {
+                    count = i;
                 }
             }
+            if (count != 0) {
+                //редактируем статику
+                weigh.append("- Вес брутто: " + (listTemp.get(count).replace("Вес, кг: ", "")) + " кг;\n");
+                weigh.append("- Габаритные размеры (ДхШхВ): " + listTemp.get(count+1).replace("Длина, мм: ", "") + "x");
+                weigh.append(listTemp.get(count + 2).replace("Ширина, мм: ", "") + "x");
+                weigh.append(listTemp.get(count + 3).replace("Высота, мм: ", "") + " мм.\n\n");
+            }
         }
-        setWeight(weight.append(" мм.\n\n"));
+        setWeight(weigh);
+        System.out.println("Characters set successfully");
     }
 }

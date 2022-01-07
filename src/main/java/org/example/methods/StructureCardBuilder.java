@@ -1,4 +1,4 @@
-package org.example.pageProcessing;
+package org.example.methods;
 
 import org.example.modules.VI.*;
 

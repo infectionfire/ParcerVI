@@ -27,7 +27,7 @@ public class WriteToFile {
 
     public static void main(String[] args){
         pw.println(InformationCollector());
-        pw.println("Successful!");
+        pw.println("Successfully!");
         pw.close();
 
         }

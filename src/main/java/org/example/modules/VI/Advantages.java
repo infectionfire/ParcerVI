@@ -4,13 +4,14 @@ import org.example.pageProcessing.GetPageVI;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import java.io.IOException;
-import static org.example.pageProcessing.StructureCardBuilder.setAdvantages;
+import static org.example.methods.StructureCardBuilder.setAdvantages;
+import static org.example.pageProcessing.GetPageVI.getPage;
 
 /**
  * Формирование поля особенности для описания товарной карточки
  */
 
-public class Advantages extends GetPageVI {//особенности
+public class Advantages{//особенности
 
     private Advantages() {
         throw new IllegalStateException("Utility class");
@@ -30,10 +31,9 @@ public class Advantages extends GetPageVI {//особенности
                 advantagesCreate.append("- ").append(theme).append(";\n");
             }
         }
-        if (advantagesCreate.toString().endsWith(";\n")){
-            advantagesCreate.replace(advantagesCreate.length()-2,advantagesCreate.length()-1,".\n");
+        if (advantagesCreate.toString().endsWith(".;\n") || advantagesCreate.toString().endsWith(";\n")){
+            advantagesCreate.replace(advantagesCreate.length()-3,advantagesCreate.length()-1,".\n");
         }
-
         setAdvantages(advantagesCreate);
     }
 }

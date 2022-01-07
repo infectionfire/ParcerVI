@@ -6,12 +6,14 @@ import org.jsoup.nodes.Element;
 
 import java.io.IOException;
 
+import static org.example.pageProcessing.GetPageVI.getPage;
+
 /**
  * Парсит страницу и берет первое фото товара
  * можно переделать, сделать сплит через " и вытаскивать ссылки через endWith
  */
 
-public class PhotoCrawler extends GetPageVI{
+public class PhotoCrawler{
 
     private static String photo = "";
 

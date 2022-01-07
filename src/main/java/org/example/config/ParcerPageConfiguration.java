@@ -2,7 +2,7 @@ package org.example.config;
 
 import org.example.modules.VI.ManualCrawler;
 import org.example.modules.VI.PhotoCrawler;
-import org.example.pageProcessing.StructureCardBuilder;
+import org.example.methods.StructureCardBuilder;
 
 import java.util.ArrayList;
 import java.util.List;

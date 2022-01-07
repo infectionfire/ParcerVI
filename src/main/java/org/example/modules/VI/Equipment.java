@@ -1,19 +1,20 @@
 package org.example.modules.VI;
 
-import org.example.pageProcessing.GetPageVIAndPrint;
+import org.example.pageProcessing.GetPageVI;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
 
-import static org.example.pageProcessing.StructureCardBuilder.setEquipment;
+import static org.example.methods.StructureCardBuilder.setEquipment;
+import static org.example.pageProcessing.GetPageVI.getPage;
 
 /**
  * Формирование поля "Комплектация" для описания товарной карточки
  */
 
-public class Equipment extends GetPageVIAndPrint{
+public class Equipment{
 
     private Equipment() {
         throw new IllegalStateException("Utility class");
@@ -21,9 +22,9 @@ public class Equipment extends GetPageVIAndPrint{
 
     public static void CreateComplectation() throws IOException {
         StringBuilder equipment = new StringBuilder("<strong>Комплектация:</strong>\n\n");
-        Document page = getPagePrint();
+        Document page = getPage();
 
-        Element tableParameter = page.select("div.fs-13.c-gray3.complect").first();
+        Element tableParameter = page.select("div.equipment.spoiler").first();
         if (tableParameter!=null){
 
             Elements names = tableParameter.select("ul");
@@ -35,11 +36,11 @@ public class Equipment extends GetPageVIAndPrint{
                 }
             equipment = new StringBuilder(equipment.toString().replace(";;", ";"));
 
-            StringBuilder stringBuilder = new StringBuilder(equipment);
-            stringBuilder.replace(stringBuilder.length()-2,stringBuilder.length()-1,".");
-            equipment = new StringBuilder(stringBuilder + "\n");
-            equipment = new StringBuilder(equipment.toString().replace("..", "."));
-            }
+            StringBuilder temp = equipment.replace(equipment.length()-2,equipment.length()-1,".")
+                    .append("\n");
+            equipment = new StringBuilder(temp.toString()
+                    .replace("..", "."));
+        }
         setEquipment(equipment);
     }
 }
