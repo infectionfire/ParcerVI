@@ -2,10 +2,10 @@ package org.example;
 
 
 import java.io.File;
-import java.io.IOException;
+import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
-import static org.example.config.ParcerPageConfiguration.InformationCollector;
+import static org.example.config.ParcerPageConfiguration.ttxInformationCollector;
 
 /**
  * Записывает информацию о товаре в текстовый файл testFile.txt
@@ -20,13 +20,14 @@ public class WriteToFile {
     static {
         try {
             pw = new PrintWriter(file);
-        } catch (IOException e) {
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
 
+
     public static void main(String[] args){
-        pw.println(InformationCollector());
+        pw.println(ttxInformationCollector());
         pw.println("Successfully!");
         pw.close();
 

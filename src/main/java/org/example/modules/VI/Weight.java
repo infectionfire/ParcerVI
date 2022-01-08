@@ -17,7 +17,7 @@ public class Weight{//вес, первая строка - брутто, оста
         throw new IllegalStateException("Utility class");
     }
 
-    public static void CreateWeigth() throws IOException {
+    public static void createWeight() throws IOException {
         StringBuilder weigh = new StringBuilder("<strong>Габаритные размеры:</strong>\n\n");
         //берем страницу
         Document page = getPage();
@@ -40,13 +40,23 @@ public class Weight{//вес, первая строка - брутто, оста
             }
             if (count != 0) {
                 //редактируем статику
-                weigh.append("- Вес брутто: " + (listTemp.get(count).replace("Вес, кг: ", "")) + " кг;\n");
-                weigh.append("- Габаритные размеры (ДхШхВ): " + listTemp.get(count+1).replace("Длина, мм: ", "") + "x");
-                weigh.append(listTemp.get(count + 2).replace("Ширина, мм: ", "") + "x");
-                weigh.append(listTemp.get(count + 3).replace("Высота, мм: ", "") + " мм.\n\n");
+                weigh.append("- Вес брутто: ")
+                        .append(listTemp.get(count)
+                        .replace("Вес, кг: ", ""))
+                        .append(" кг;\n");
+                weigh.append("- Габаритные размеры (ДхШхВ): ")
+                        .append(listTemp.get(count + 1)
+                        .replace("Длина, мм: ", ""))
+                        .append("x");
+                weigh.append(listTemp.get(count + 2)
+                        .replace("Ширина, мм: ", ""))
+                        .append("x");
+                weigh.append(listTemp.get(count + 3)
+                        .replace("Высота, мм: ", ""))
+                        .append(" мм.\n\n");
             }
         }
         setWeight(weigh);
-        System.out.println("Characters set successfully");
+        System.out.println("Product card has been successfully created");
     }
 }

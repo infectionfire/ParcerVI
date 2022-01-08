@@ -1,12 +1,11 @@
 package org.example.modules.VI;
 
-import org.example.pageProcessing.GetPageVI;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
 
-import static org.example.methods.StringCharacterFormatter.charactFormatter;
+import static org.example.methods.StringCharacterFormatter.characteristicsFormatter;
 import static org.example.methods.StructureCardBuilder.setCharacteristics;
 import static org.example.pageProcessing.GetPageVI.getPage;
 
@@ -32,7 +31,7 @@ public class Characteristics{//технические характеристик
             for (Element value : values) {//цикл добавляет значения к строке, попутно форматируя ее
                 String text = value.select("span.text").text();
                 String valueInf = value.select("span.value").text();
-                charact.append(charactFormatter(text, valueInf));
+                charact.append(characteristicsFormatter(text, valueInf));
             }
         }
         if (charact.toString().endsWith(";\n")){

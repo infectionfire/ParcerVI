@@ -8,12 +8,13 @@ import org.jsoup.nodes.Element;
 import java.io.IOException;
 
 import static org.example.methods.StructureCardBuilder.setFeatures;
+import static org.example.pageProcessing.GetPageVI.getPage;
 
 /**
- *
+ *Формирование начального текста описания товарной карточки
  */
 
-public class Features extends GetPageVI{
+public class Features{
 
     private Features() {
         throw new IllegalStateException("Utility class");

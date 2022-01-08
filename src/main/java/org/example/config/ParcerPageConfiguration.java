@@ -33,7 +33,7 @@ public class ParcerPageConfiguration {
         return ttx;
     }
 
-    public static List<String> InformationCollector() throws  IndexOutOfBoundsException{
+    public static List<String> ttxInformationCollector() throws  IndexOutOfBoundsException{
 
         try {//подключаем модули
             for (int i = 0; i < count; i++) {

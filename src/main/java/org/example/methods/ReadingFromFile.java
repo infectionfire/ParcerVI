@@ -9,7 +9,7 @@ import java.util.List;
 public class ReadingFromFile {
 
     //создаем массив из списка ссылок
-    public static List<String> readPrintValue() throws IOException {
+    public static List<String> readUrlsFromTXTFile() throws IOException {
         FileReader urls = new FileReader("test.txt");
         BufferedReader input = new BufferedReader(urls);
         List<String > list = new ArrayList<>();

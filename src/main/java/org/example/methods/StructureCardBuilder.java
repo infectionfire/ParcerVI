@@ -41,7 +41,7 @@ public class StructureCardBuilder {
         Characteristics.CreateCharacteristics();
         Advantages.CreateAdvantages();
         Equipment.CreateComplectation();
-        Weight.CreateWeigth();
+        Weight.createWeight();
         oneProductCard.append(features).append(characteristics).append(advantages).append(equipment).append(weight);
 
         return oneProductCard;

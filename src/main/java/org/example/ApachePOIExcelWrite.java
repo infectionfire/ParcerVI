@@ -20,7 +20,7 @@ public class ApachePOIExcelWrite {
     private static final String FILE_NAME = "ParserFile.xlsx";
 
     public static void main(String[] args) throws IOException {
-
+        final long startTime = System.currentTimeMillis();
         XSSFWorkbook workbook = new XSSFWorkbook();
         XSSFSheet sheet = workbook.createSheet("ParserFile");
 
@@ -42,5 +42,7 @@ public class ApachePOIExcelWrite {
         workbook.write(outputStream);
         outputStream.close();
         workbook.close();
+        final long elapsedTimeMillis = System.currentTimeMillis() - startTime;
+        System.out.println("Сборка завершена за "+Math.ceil(elapsedTimeMillis/1000.0)+ " секунд");
     }
 }

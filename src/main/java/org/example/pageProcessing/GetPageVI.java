@@ -12,7 +12,7 @@ public class GetPageVI {
     public static Document getPage() throws IOException {
             //меняем значение для выбора ссылки, отсчет с нуля
             String url = ReadingFromFile
-                    .readPrintValue()
+                    .readUrlsFromTXTFile()
                     .get(ParcerPageConfiguration.getNumber());
             return Jsoup.parse(new URL(url), 45000);
         }

@@ -4,7 +4,7 @@ import java.util.List;
 
 public class StringCharacterFormatter {
 
-    public static StringBuilder charactFormatter(String text, String valueInf){
+    public static StringBuilder characteristicsFormatter(String text, String valueInf){
         StringBuilder characters = new StringBuilder();
         if(text.equals("")) {
         }else {
