@@ -1,13 +1,12 @@
 package org.example.modules.VI;
 
+import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
 
 import static org.example.methods.StringCharacterFormatter.characteristicsFormatter;
-import static org.example.methods.StructureCardBuilder.setCharacteristics;
-import static org.example.pageProcessing.GetPageVI.getPage;
 
 /**
  * Формирование поля "технические характеристики" для описания товарной карточки
@@ -19,9 +18,9 @@ public class Characteristics{//технические характеристик
     }
 
 
-    public static void CreateCharacteristics() throws IOException {
+    public static StringBuilder createCharacteristics(Document document) throws IOException {
         StringBuilder charact = new StringBuilder("<strong>Технические характеристики:</strong>\n\n");
-        Element element = getPage()
+        Element element = document
                 .select("div.features.spoiler")
                 .first();
         if (element!=null) {
@@ -37,6 +36,6 @@ public class Characteristics{//технические характеристик
         if (charact.toString().endsWith(";\n")){
             charact.replace(charact.length()-2,charact.length()-1,".");
         }
-        setCharacteristics((charact+"\n"));
+        return charact.append("\n");
     }
 }

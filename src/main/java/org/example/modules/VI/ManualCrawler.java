@@ -1,12 +1,9 @@
 package org.example.modules.VI;
 
-import org.example.pageProcessing.GetPageVI;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 import java.io.IOException;
-
-import static org.example.pageProcessing.GetPageVI.getPage;
 
 /**
  * Парсит страницу и берет ссылку на инструкцию если она есть
@@ -16,28 +13,28 @@ import static org.example.pageProcessing.GetPageVI.getPage;
 public class ManualCrawler{
     private static String instr = "";
 
-    public static void setInstr(String instr) {
-        ManualCrawler.instr = instr;
-    }
 
-    public static String getManual() throws IOException {
-        CreateInstrUrl();
+    public static String getManual(Document document) throws IOException {
+        CreateInstrUrl(document);
         return instr;
     }
 
-    public static void CreateInstrUrl() throws IOException {
-        setInstr("");
-        Document page = getPage();
+    public static String CreateInstrUrl(Document document) throws IOException {
+        StringBuilder setInstr = new StringBuilder("");
+        Document page = document;
         Element imageElement = page.select("ul.unordered-list.-links.spoiler.-download").first();
         if (imageElement != null) {
             instr = imageElement.toString();
-            String[] ins = instr.split("href=\"//");
+            String[] ins = instr.split("<a href=\"//");
             ins = ins[1].split("\"");
-            setInstr(ins[0]);
-            if (!instr.endsWith(".pdf")) {
-                setInstr("");
+            setInstr= new StringBuilder("https://"+ins[0]);
+            if (!setInstr.toString().endsWith(".pdf")) {
+                setInstr = new StringBuilder("");
             }
         }
+        instr=setInstr.toString();
+
+        return instr;
     }
 }
 

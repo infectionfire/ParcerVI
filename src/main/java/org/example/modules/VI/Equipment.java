@@ -1,14 +1,10 @@
 package org.example.modules.VI;
 
-import org.example.pageProcessing.GetPageVI;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
-
-import static org.example.methods.StructureCardBuilder.setEquipment;
-import static org.example.pageProcessing.GetPageVI.getPage;
 
 /**
  * Формирование поля "Комплектация" для описания товарной карточки
@@ -20,9 +16,9 @@ public class Equipment{
         throw new IllegalStateException("Utility class");
     }
 
-    public static void CreateComplectation() throws IOException {
+    public static StringBuilder createComplectation(Document document) throws IOException {
         StringBuilder equipment = new StringBuilder("<strong>Комплектация:</strong>\n\n");
-        Document page = getPage();
+        Document page = document;
 
         Element tableParameter = page.select("div.equipment.spoiler").first();
         if (tableParameter!=null){
@@ -41,6 +37,6 @@ public class Equipment{
             equipment = new StringBuilder(temp.toString()
                     .replace("..", "."));
         }
-        setEquipment(equipment);
+        return equipment;
     }
 }
