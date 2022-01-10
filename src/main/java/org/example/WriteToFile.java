@@ -3,9 +3,10 @@ package org.example;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintWriter;
 
-import static org.example.config.ParcerPageConfiguration.ttxInformationCollector;
+import static org.example.config.ParserPageConfiguration.allInformationCollector;
 
 /**
  * Записывает информацию о товаре в текстовый файл testFile.txt
@@ -13,6 +14,7 @@ import static org.example.config.ParcerPageConfiguration.ttxInformationCollector
  */
 
 public class WriteToFile {
+
 
     static File file = new File("testFile.txt");
     static PrintWriter pw;
@@ -26,8 +28,8 @@ public class WriteToFile {
     }
 
 
-    public static void main(String[] args){
-        pw.println(ttxInformationCollector());
+    public static void main(String[] args) throws IOException {
+        pw.println(allInformationCollector());
         pw.println("Successfully!");
         pw.close();
 

@@ -1,11 +1,10 @@
 package org.example.modules.VI;
 
-import org.example.pageProcessing.GetPageVI;
+import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+
 import java.io.IOException;
-import static org.example.methods.StructureCardBuilder.setAdvantages;
-import static org.example.pageProcessing.GetPageVI.getPage;
 
 /**
  * Формирование поля особенности для описания товарной карточки
@@ -17,9 +16,9 @@ public class Advantages{//особенности
         throw new IllegalStateException("Utility class");
     }
 
-    public static void CreateAdvantages() throws IOException {
+    public static StringBuilder createAdvantages(Document document) throws IOException {
         StringBuilder advantagesCreate = new StringBuilder("<strong>Особенности:</strong>\n\n");
-        Element element = getPage()
+        Element element = document
                 .select("div.advantages.spoiler")
                 .first();
         if (element!=null) {
@@ -34,6 +33,6 @@ public class Advantages{//особенности
         if (advantagesCreate.toString().endsWith(".;\n") || advantagesCreate.toString().endsWith(";\n")){
             advantagesCreate.replace(advantagesCreate.length()-3,advantagesCreate.length()-1,".\n");
         }
-        setAdvantages(advantagesCreate);
+        return advantagesCreate;
     }
 }

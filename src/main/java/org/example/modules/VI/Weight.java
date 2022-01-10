@@ -8,19 +8,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.example.methods.StructureCardBuilder.setWeight;
-import static org.example.pageProcessing.GetPageVI.getPage;
-
 public class Weight{//вес, первая строка - брутто, остальные перекидываем в габариты
 
     private Weight() {
         throw new IllegalStateException("Utility class");
     }
 
-    public static void createWeight() throws IOException {
+    public static StringBuilder createWeight(Document document) throws IOException {
         StringBuilder weigh = new StringBuilder("<strong>Габаритные размеры:</strong>\n\n");
         //берем страницу
-        Document page = getPage();
+        Document page = document;
         //выбираем поля
         Elements tableParameter = page.select("ul.unordered-list");
         if (tableParameter!=null) {
@@ -56,7 +53,7 @@ public class Weight{//вес, первая строка - брутто, оста
                         .append(" мм.\n\n");
             }
         }
-        setWeight(weigh);
-        System.out.println("Product card has been successfully created");
+        return weigh;
+
     }
 }

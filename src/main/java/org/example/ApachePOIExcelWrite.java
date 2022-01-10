@@ -7,13 +7,13 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.example.config.ParcerPageConfiguration;
+import org.example.config.ParserPageConfiguration;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
-import static org.example.config.ParcerPageConfiguration.*;
+import static org.example.config.ParserPageConfiguration.allInformationCollector;
 
 public class ApachePOIExcelWrite {
 
@@ -33,16 +33,16 @@ public class ApachePOIExcelWrite {
             Cell cellPhoto = row.createCell(1);//второй столбец, ссылки на фото
             Cell cellInstr = row.createCell(2);//третий столбец, ссылки на фото
             cell.setCellValue(crm);
-            cellInstr.setCellValue(ParcerPageConfiguration.instr.get(index));
-            cellPhoto.setCellValue(ParcerPageConfiguration.photos.get(index).replace("68x60", "800x800"));
-            index++;
-        }
+            cellInstr.setCellValue(ParserPageConfiguration.instr.get(index));
+            cellPhoto.setCellValue(ParserPageConfiguration.photos.get(index).replace("68x60", "800x800"));
+            System.out.println("Product card"+index+++" has been successfully created");
+            }
 
         FileOutputStream outputStream = new FileOutputStream(FILE_NAME);
         workbook.write(outputStream);
         outputStream.close();
         workbook.close();
         final long elapsedTimeMillis = System.currentTimeMillis() - startTime;
-        System.out.println("Сборка завершена за "+Math.ceil(elapsedTimeMillis/1000.0)+ " секунд");
-    }
+        System.out.printf("Сборка завершена за %.3f секунд", elapsedTimeMillis/1000f);
+        }
 }

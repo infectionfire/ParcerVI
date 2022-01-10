@@ -1,19 +1,24 @@
 package org.example.pageProcessing;
 
-import org.example.config.ParcerPageConfiguration;
-import org.example.methods.ReadingFromFile;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.example.methods.ReadingFromFile.readUrlsFromTXTFile;
 
 public class GetPageVI {
-    public static Document getPage() throws IOException {
-            //меняем значение для выбора ссылки, отсчет с нуля
-            String url = ReadingFromFile
-                    .readUrlsFromTXTFile()
-                    .get(ParcerPageConfiguration.getNumber());
-            return Jsoup.parse(new URL(url), 45000);
-        }
+    
+    public static List<Document> getPage() throws IOException {
+            List<Document> documentList = new ArrayList<>();
+                        //меняем значение для выбора ссылки, отсчет с нуля
+            List<String> urls = readUrlsFromTXTFile();
+            for (String url: urls) {
+                documentList.add(Jsoup.parse(new URL(url), 45000));
+            }
+            return documentList;
+    }
 }
