@@ -6,7 +6,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import static org.example.config.ParserPageConfiguration.allInformationCollector;
+import static org.example.config.StructureCardBuilder.BuildDescription;
+import static org.example.config.StructureCardBuilder.getTtx;
 
 /**
  * Записывает информацию о товаре в текстовый файл testFile.txt
@@ -29,10 +30,10 @@ public class WriteToFile {
 
 
     public static void main(String[] args) throws IOException {
-        pw.println(allInformationCollector());
+        BuildDescription();
+        pw.println(getTtx());
         pw.println("Successfully!");
         pw.close();
-
         }
 }
 

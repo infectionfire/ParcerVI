@@ -7,15 +7,13 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.example.config.ParserPageConfiguration;
-
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.example.config.ParserPageConfiguration.allInformationCollector;
+import static org.example.config.StructureCardBuilder.*;
 
 public class ApachePOIExcelWrite {
 
@@ -23,20 +21,23 @@ public class ApachePOIExcelWrite {
 
     public static void main(String[] args) throws IOException {
         final long startTime = System.currentTimeMillis();
+        BuildDescription();
         XSSFWorkbook workbook = new XSSFWorkbook();
         XSSFSheet sheet = workbook.createSheet("ParserFile");
-
+        List<String> productCards = new ArrayList(getTtx());
+        List<String> photoList = new ArrayList(getPhotos());
+        List<String> instrList = new ArrayList(getInstr());
         int rowNum = 0;//счетчик строк
         int index = 0;
-        List<String> createMassiveForXLSX = new ArrayList<>(allInformationCollector());
-        for (String crm : createMassiveForXLSX) {//цикл создания параметризированного списка
+
+        for (String crm : productCards) {//цикл создания параметризированного списка
             Row row = sheet.createRow(rowNum++);
             Cell cell = row.createCell(0);//первый столбец, описание товаров
             Cell cellPhoto = row.createCell(1);//второй столбец, ссылки на фото
             Cell cellInstr = row.createCell(2);//третий столбец, ссылки на фото
             cell.setCellValue(crm);
-            cellInstr.setCellValue(ParserPageConfiguration.instr.get(index));
-            cellPhoto.setCellValue(ParserPageConfiguration.photos.get(index).replace("68x60", "800x800"));
+            cellInstr.setCellValue(instrList.get(index));
+            cellPhoto.setCellValue(photoList.get(index).replace("68x60", "800x800"));
             System.out.println("Product card"+index+++" has been successfully created");
             }
 
