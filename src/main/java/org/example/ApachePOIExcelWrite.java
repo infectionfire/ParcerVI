@@ -11,6 +11,7 @@ import org.example.config.ParserPageConfiguration;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.example.config.ParserPageConfiguration.allInformationCollector;
@@ -26,7 +27,7 @@ public class ApachePOIExcelWrite {
 
         int rowNum = 0;//счетчик строк
         int index = 0;
-        List<String> createMassiveForXLSX = allInformationCollector();
+        List<String> createMassiveForXLSX = new ArrayList<>(allInformationCollector());
         for (String crm : createMassiveForXLSX) {//цикл создания параметризированного списка
             Row row = sheet.createRow(rowNum++);
             Cell cell = row.createCell(0);//первый столбец, описание товаров
