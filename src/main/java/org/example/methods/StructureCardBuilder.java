@@ -29,7 +29,7 @@ public class StructureCardBuilder {
     //функции для заполнения ттх
     public static List<String> BuildDescription() throws IOException {
         List<String> productCards = new ArrayList<>(100);
-        List<Document> documentList = new ArrayList<>(getPage());
+        List<Document> documentList = getPage();
         List<String> photoListBuilder = new ArrayList<>(100);
         List<String> instrListBuilder = new ArrayList<>(100);
         for(Document document:documentList) {
