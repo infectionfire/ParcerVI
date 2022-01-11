@@ -6,7 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import static org.example.config.ParcerPageConfiguration.allInformationCollector;
+import static org.example.config.ParserPageConfiguration.allInformationCollector;
 
 /**
  * Записывает информацию о товаре в текстовый файл testFile.txt

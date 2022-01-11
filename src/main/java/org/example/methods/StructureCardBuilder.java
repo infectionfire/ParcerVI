@@ -1,13 +1,15 @@
 package org.example.methods;
 
-import org.example.modules.VI.*;
+import org.example.modules.VI.ManualCrawler;
+import org.example.modules.VI.PhotoCrawler;
 import org.jsoup.nodes.Document;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.example.config.ParcerPageConfiguration.*;
+import static org.example.config.ParserPageConfiguration.setInstr;
+import static org.example.config.ParserPageConfiguration.setPhotos;
 import static org.example.modules.VI.Advantages.createAdvantages;
 import static org.example.modules.VI.Characteristics.createCharacteristics;
 import static org.example.modules.VI.Equipment.createComplectation;
@@ -26,8 +28,8 @@ public class StructureCardBuilder {
 
     //функции для заполнения ттх
     public static List<String> BuildDescription() throws IOException {
-        List<String> productCards = new ArrayList<>();
-        List<Document> documentList = getPage();
+        List<String> productCards = new ArrayList<>(100);
+        List<Document> documentList = new ArrayList<>(getPage());
         List<String> photoListBuilder = new ArrayList<>(100);
         List<String> instrListBuilder = new ArrayList<>(100);
         for(Document document:documentList) {

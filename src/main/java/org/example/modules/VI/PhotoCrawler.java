@@ -26,7 +26,7 @@ public class PhotoCrawler{
                 .replaceAll("<div class=\"item -active\" data-behavior=\"item\">","")
                 .replaceAll("<img src=\"data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7\" data-src=\"","");
         String[] ph = photo.split("\"");
-        photo=ph[0].replace(".jpg", "").strip();
+        photo=ph[0].strip();
         return photo;
         }
 }
