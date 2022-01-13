@@ -1,4 +1,4 @@
-package org.example.pageProcessing;
+package org.example.page_processing;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;

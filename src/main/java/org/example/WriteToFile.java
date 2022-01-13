@@ -18,24 +18,14 @@ public class WriteToFile {
 
 
     static File file = new File("testFile.txt");
-    static PrintWriter pw;
-
-    static {
-        try {
-            pw = new PrintWriter(file);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }finally {
-            pw.close();
-        }
-    }
-
 
     public static void main(String[] args) throws IOException {
-        BuildDescription();
-        pw.println(getTtx());
-        pw.println("Successfully!");
+        try(PrintWriter pw = new PrintWriter(file)) {
+            BuildDescription();
+            pw.println(getTtx());
+            pw.println("Successfully!");
         }
+    }
 }
 
 

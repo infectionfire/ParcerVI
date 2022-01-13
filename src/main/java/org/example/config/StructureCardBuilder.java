@@ -13,7 +13,7 @@ import static org.example.modules.VI.Characteristics.createCharacteristics;
 import static org.example.modules.VI.Equipment.createComplectation;
 import static org.example.modules.VI.Features.createFeatures;
 import static org.example.modules.VI.Weight.createWeight;
-import static org.example.pageProcessing.GetPageVI.getPage;
+import static org.example.page_processing.GetPageVI.getPage;
 
 /**
  * Файл для составления конфигурации описания
@@ -66,7 +66,10 @@ public class StructureCardBuilder {
                     .append(createAdvantages(document))
                     .append(createComplectation(document))
                     .append(createWeight(document));
-            productCards.add(oneProductCard.toString().replaceAll(";;",";"));
+            productCards.add(oneProductCard.toString()
+                    .replaceAll(";;",";")
+                    .replaceAll("\\.;", ";")
+                    .replaceAll("\\.\\.","."));
             photoListBuilder.add(PhotoCrawler.getPhoto(document));
             instrListBuilder.add(ManualCrawler.getManual(document));
             }

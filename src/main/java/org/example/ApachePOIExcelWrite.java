@@ -23,7 +23,7 @@ public class ApachePOIExcelWrite {
         final long startTime = System.currentTimeMillis();
         BuildDescription();
         //создание книги
-        XSSFWorkbook workbook = new XSSFWorkbook();
+        try (XSSFWorkbook workbook = new XSSFWorkbook()){
         XSSFSheet sheet = workbook.createSheet("ParserFile");
         //массивы для записи в эксель
         List<String> productCards = new ArrayList(getTtx());
@@ -41,16 +41,15 @@ public class ApachePOIExcelWrite {
             Cell cellPhoto = row.createCell(1);//второй столбец, ссылки на фото
             Cell cellInstr = row.createCell(2);//третий столбец, ссылки на инструкции (если есть)
 
-            cell.setCellValue(crm.replaceAll("\\.;", ";").replaceAll("\\.\\.","."));
+            cell.setCellValue(crm);
             cellInstr.setCellValue(instrList.get(index));
             cellPhoto.setCellValue(photoList.get(index).replace("68x60", "800x800"));
             System.out.println("Product card"+index+++" has been successfully created");
             }
-
         FileOutputStream outputStream = new FileOutputStream(FILE_NAME);
         workbook.write(outputStream);
-        outputStream.close();
-        workbook.close();
+        }
+
         final long elapsedTimeMillis = System.currentTimeMillis() - startTime;
         System.out.printf("Сборка завершена за %.3f секунд", elapsedTimeMillis/1000f);
         }
