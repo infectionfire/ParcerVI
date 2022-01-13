@@ -25,6 +25,8 @@ public class WriteToFile {
             pw = new PrintWriter(file);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+        }finally {
+            pw.close();
         }
     }
 
@@ -33,7 +35,6 @@ public class WriteToFile {
         BuildDescription();
         pw.println(getTtx());
         pw.println("Successfully!");
-        pw.close();
         }
 }
 

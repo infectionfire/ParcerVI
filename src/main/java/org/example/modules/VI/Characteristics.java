@@ -1,5 +1,6 @@
 package org.example.modules.VI;
 
+import org.jetbrains.annotations.NotNull;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -17,7 +18,7 @@ public class Characteristics{//технические характеристик
         throw new IllegalStateException("Utility class");
     }
 
-
+    @NotNull
     public static StringBuilder createCharacteristics(Document document) throws IOException {
         StringBuilder charact = new StringBuilder("<strong>Технические характеристики:</strong>\n\n");
         Element element = document

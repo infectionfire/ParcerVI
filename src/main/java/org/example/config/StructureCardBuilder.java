@@ -60,6 +60,7 @@ public class StructureCardBuilder {
         for(Document document:documentList) {
 
             StringBuilder oneProductCard = new StringBuilder();
+
             oneProductCard.append(createFeatures(document))
                     .append(createCharacteristics(document))
                     .append(createAdvantages(document))

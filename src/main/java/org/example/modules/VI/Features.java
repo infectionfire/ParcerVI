@@ -1,5 +1,6 @@
 package org.example.modules.VI;
 import org.example.methods.HtmlToText;
+import org.jetbrains.annotations.NotNull;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
@@ -16,7 +17,7 @@ public class Features{
         throw new IllegalStateException("Utility class");
     }
     //доделать метод
-
+    @NotNull
     public static StringBuilder createFeatures(Document document)  throws IOException {
 
         Document page = document;

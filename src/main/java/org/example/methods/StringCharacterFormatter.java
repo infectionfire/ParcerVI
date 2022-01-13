@@ -6,8 +6,7 @@ public class StringCharacterFormatter {
 
     public static StringBuilder characteristicsFormatter(String text, String valueInf){
         StringBuilder characters = new StringBuilder();
-        if(text.equals("")) {
-        }else {
+        if(!text.equals("")) {
             List<String> stringList = List.of(text.split(", "));
             if (stringList.size() > 1) {//конструктор строки
                 characters.append("- ")

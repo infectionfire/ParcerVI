@@ -22,20 +22,26 @@ public class ApachePOIExcelWrite {
     public static void main(String[] args) throws IOException {
         final long startTime = System.currentTimeMillis();
         BuildDescription();
+        //создание книги
         XSSFWorkbook workbook = new XSSFWorkbook();
         XSSFSheet sheet = workbook.createSheet("ParserFile");
+        //массивы для записи в эксель
         List<String> productCards = new ArrayList(getTtx());
         List<String> photoList = new ArrayList(getPhotos());
         List<String> instrList = new ArrayList(getInstr());
+
         int rowNum = 0;//счетчик строк
         int index = 0;
 
         for (String crm : productCards) {//цикл создания параметризированного списка
+
             Row row = sheet.createRow(rowNum++);
+
             Cell cell = row.createCell(0);//первый столбец, описание товаров
             Cell cellPhoto = row.createCell(1);//второй столбец, ссылки на фото
-            Cell cellInstr = row.createCell(2);//третий столбец, ссылки на фото
-            cell.setCellValue(crm);
+            Cell cellInstr = row.createCell(2);//третий столбец, ссылки на инструкции (если есть)
+
+            cell.setCellValue(crm.replaceAll("\\.;", ";").replaceAll("\\.\\.","."));
             cellInstr.setCellValue(instrList.get(index));
             cellPhoto.setCellValue(photoList.get(index).replace("68x60", "800x800"));
             System.out.println("Product card"+index+++" has been successfully created");

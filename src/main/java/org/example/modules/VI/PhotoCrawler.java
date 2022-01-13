@@ -1,5 +1,6 @@
 package org.example.modules.VI;
 
+import org.jetbrains.annotations.NotNull;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
@@ -18,7 +19,7 @@ public class PhotoCrawler{
         PhotoUrlsCreate(document);
         return photo;
     }
-
+    @NotNull
     public static String  PhotoUrlsCreate(Document document) throws IOException {
         Document page = document;
         Element imageElement = page.select("div.item").first();

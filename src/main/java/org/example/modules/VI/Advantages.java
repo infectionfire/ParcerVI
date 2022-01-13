@@ -1,5 +1,6 @@
 package org.example.modules.VI;
 
+import org.jetbrains.annotations.NotNull;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -16,8 +17,9 @@ public class Advantages{//особенности
         throw new IllegalStateException("Utility class");
     }
 
+    @NotNull
     public static StringBuilder createAdvantages(Document document) throws IOException {
-        StringBuilder advantagesCreate = new StringBuilder("<strong>Особенности:</strong>\n\n");
+        StringBuilder advantagesCreator = new StringBuilder("<strong>Особенности:</strong>\n\n");
         Element element = document
                 .select("div.advantages.spoiler")
                 .first();
@@ -25,14 +27,15 @@ public class Advantages{//особенности
             Elements names = element.select("ul");//вытаскиваем инфу из маркированного списка
             Elements values = names.select("li");
 
-            for (Element value : values) {//цикл добавляет значения к строке, попутно форматируя ее
-                String theme = value.select("li").text();
-                advantagesCreate.append("- ").append(theme).append(";\n");
+            for (int i =0 ;i < values.size();i++) {//цикл добавляет значения к строке, попутно форматируя ее
+                String theme = values.get(i).select("li").text();
+                if (values.size()-1!=i) {
+                    advantagesCreator.append("- ").append(theme).append(";\n");
+                }else {
+                    advantagesCreator.append("- ").append(theme).append(".\n\n");
+                }
             }
         }
-        if (advantagesCreate.toString().endsWith(".;\n") || advantagesCreate.toString().endsWith(";\n")){
-            advantagesCreate.replace(advantagesCreate.length()-3,advantagesCreate.length()-1,".\n");
-        }
-        return advantagesCreate;
+        return advantagesCreator;
     }
 }

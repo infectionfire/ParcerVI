@@ -1,5 +1,6 @@
 package org.example.modules.VI;
 
+import org.jetbrains.annotations.NotNull;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -15,7 +16,7 @@ public class Equipment{
     private Equipment() {
         throw new IllegalStateException("Utility class");
     }
-
+    @NotNull
     public static StringBuilder createComplectation(Document document) throws IOException {
         StringBuilder equipment = new StringBuilder("<strong>Комплектация:</strong>\n\n");
         Document page = document;

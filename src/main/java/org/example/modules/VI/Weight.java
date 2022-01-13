@@ -1,5 +1,6 @@
 package org.example.modules.VI;
 
+import org.jetbrains.annotations.NotNull;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -13,7 +14,7 @@ public class Weight{//вес, первая строка - брутто, оста
     private Weight() {
         throw new IllegalStateException("Utility class");
     }
-
+    @NotNull
     public static StringBuilder createWeight(Document document) throws IOException {
         StringBuilder weigh = new StringBuilder("<strong>Габаритные размеры:</strong>\n\n");
         //берем страницу

@@ -1,5 +1,6 @@
 package org.example.modules.VI;
 
+import org.jetbrains.annotations.NotNull;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
@@ -18,7 +19,7 @@ public class ManualCrawler{
         CreateInstrUrl(document);
         return instr;
     }
-
+    @NotNull
     public static String CreateInstrUrl(Document document) throws IOException {
         StringBuilder setInstr = new StringBuilder("");
         Document page = document;
